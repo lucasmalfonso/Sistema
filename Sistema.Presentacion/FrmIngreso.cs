@@ -75,7 +75,7 @@ namespace Sistema.Presentacion
             TxtNumComprobate.Clear();
             DtDetalle.Clear();
             TxtSubTotal.Text = "0.00";
-            TxtTotalImpuesto.Text ="0.00";
+            TxtTotalImpuesto.Text = "0.00";
             TxtTotal.Text = "0.00";
 
             DgvListado.Columns[0].Visible = false;
@@ -219,14 +219,14 @@ namespace Sistema.Presentacion
             else
             {
                 foreach (DataRow FilaTemp in DtDetalle.Rows)
-                { 
+                {
                     Total = Total + Convert.ToDecimal(FilaTemp["importe"]);
                 }
             }
             SubTotal = Total / (1 + Convert.ToDecimal(TxtImpuesto.Text));
             TxtTotal.Text = Total.ToString("#0.00#");
             TxtSubTotal.Text = SubTotal.ToString("#0.00#");
-            TxtTotalImpuesto.Text = (Total- SubTotal).ToString("#0.00#");
+            TxtTotalImpuesto.Text = (Total - SubTotal).ToString("#0.00#");
 
         }
         private void DgvDetalle_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -293,7 +293,7 @@ namespace Sistema.Presentacion
             try
             {
                 string Rpta = "";
-                if (TxtIdProveedor.Text == String.Empty || TxtImpuesto.Text==string.Empty || TxtNumComprobate.Text==string.Empty || DtDetalle.Rows.Count==0)
+                if (TxtIdProveedor.Text == String.Empty || TxtImpuesto.Text == string.Empty || TxtNumComprobate.Text == string.Empty || DtDetalle.Rows.Count == 0)
                 {
                     this.MensajeError("Falta ingresar algunos datos, serán remarcados");
                     ErrorIcono.SetError(TxtIdProveedor, "Seleccione un proveedor");
@@ -303,7 +303,7 @@ namespace Sistema.Presentacion
                 }
                 else
                 {
-                    Rpta = NIngreso.Insertar(Convert.ToInt32(TxtIdProveedor.Text),Variables.IdUsuario,CboComprobante.Text, TxtSerieComprobante.Text.Trim(),TxtNumComprobate.Text.Trim(),Convert.ToDecimal(TxtImpuesto.Text),Convert.ToDecimal(TxtTotal.Text),DtDetalle);
+                    Rpta = NIngreso.Insertar(Convert.ToInt32(TxtIdProveedor.Text), Variables.IdUsuario, CboComprobante.Text, TxtSerieComprobante.Text.Trim(), TxtNumComprobate.Text.Trim(), Convert.ToDecimal(TxtImpuesto.Text), Convert.ToDecimal(TxtTotal.Text), DtDetalle);
                     if (Rpta.Equals("OK"))
                     {
                         this.MensajeOk("Se insertó de forma correcta el registro");
@@ -331,11 +331,98 @@ namespace Sistema.Presentacion
         {
             try
             {
-                DgvMostrarDetalle.DataSource = NIngreso.ListarDetalle();
+                DgvMostrarDetalle.DataSource = NIngreso.ListarDetalle(Convert.ToInt32(DgvListado.CurrentRow.Cells["ID"].Value));
+                decimal Total, SubTotal;
+                decimal Impuesto = Convert.ToDecimal(DgvListado.CurrentRow.Cells["Impuesto"].Value);
+                Total = Convert.ToDecimal(DgvListado.CurrentRow.Cells["Total"].Value);
+                SubTotal = Total / (1 + Impuesto);
+                TxtSubtotalD.Text = SubTotal.ToString("#0.00#");
+                TxtTotalImpuestoD.Text = (Total - SubTotal).ToString("#0.00#");
+                TxtTotalD.Text = Total.ToString("#0.00#");
+                PanelMostrar.Visible = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void DgvListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == DgvListado.Columns["Seleccionar"].Index)
+            {
+                DataGridViewCheckBoxCell ChkEliminar = (DataGridViewCheckBoxCell)DgvListado.Rows[e.RowIndex].Cells["Seleccionar"];
+                ChkEliminar.Value = !Convert.ToBoolean(ChkEliminar.Value);
+            }
+        }
+
+        private void BtnCerrarDetalle_Click(object sender, EventArgs e)
+        {
+            PanelMostrar.Visible = false;
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Limpiar();
+            TabGeneral.SelectedIndex = 0;
+        }
+
+        private void ChkSeleccionar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ChkSeleccionar.Checked)
+            {
+                DgvListado.Columns[0].Visible = true;
+                BtnAnular.Visible = true;
+
+            }
+            else
+            {
+                DgvListado.Columns[0].Visible = false;
+                BtnAnular.Visible = false;
+            }
+        }
+
+        private void BtnAnular_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult Opcion;
+                Opcion = MessageBox.Show("¿Realmente desea anular el(los) registro(s) seleccionados?", "Sistema de Ventas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (Opcion == DialogResult.OK)
+                {
+                    int Codigo;
+                    string Rpta = "";
+
+                    foreach (DataGridViewRow row in DgvListado.Rows)
+                    {
+                        if (Convert.ToBoolean(row.Cells[0].Value))
+                        {
+                            Codigo = Convert.ToInt32(row.Cells[1].Value);
+                            Rpta = NIngreso.Anular(Codigo);
+
+                            if (Rpta.Equals("OK"))
+                            {
+                                this.MensajeOk("Se anuló de forma correcta el registro" + Convert.ToString(row.Cells[6].Value) + "-" + Convert.ToString(row.Cells[7].Value));
+                            }
+                            else
+                            {
+                                this.MensajeError(Rpta);
+                            }
+                        }
+                    }
+                    this.Listar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void PanelMostrar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

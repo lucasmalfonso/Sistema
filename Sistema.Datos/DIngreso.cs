@@ -124,7 +124,8 @@ namespace Sistema.Datos
                 Comando.CommandType = CommandType.StoredProcedure;
                 Comando.Parameters.Add("@idingreso", SqlDbType.Int).Value = Id;
                 SqlCon.Open();
-                Rpta = Comando.ExecuteNonQuery() == 1 ? "OK" : "No se pudo anular el registro";
+                Comando.ExecuteNonQuery();
+                Rpta = "OK";
             }
             catch (Exception ex)
             {
