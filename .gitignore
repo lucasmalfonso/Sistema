@@ -1,0 +1,11 @@
+# Carpetas temporales de Visual Studio
+.vs/
+bin/
+obj/
+
+# Archivos de usuario de VS
+*.user
+*.suo
+
+# Otros
+*.log
