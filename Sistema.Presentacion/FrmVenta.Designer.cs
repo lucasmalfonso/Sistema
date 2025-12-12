@@ -65,6 +65,7 @@
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.TabGeneral = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.PanelArticulos = new System.Windows.Forms.Panel();
             this.LblTotalArticulos = new System.Windows.Forms.Label();
             this.DgvArticulos = new System.Windows.Forms.DataGridView();
@@ -72,7 +73,6 @@
             this.BtnFiltrarArticulos = new System.Windows.Forms.Button();
             this.TxtBuscarArticulo = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.TxtTotal = new System.Windows.Forms.TextBox();
             this.TxtTotalImpuesto = new System.Windows.Forms.TextBox();
             this.TxtSubTotal = new System.Windows.Forms.TextBox();
@@ -91,9 +91,9 @@
             this.tabPage1.SuspendLayout();
             this.TabGeneral.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.PanelArticulos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvArticulos)).BeginInit();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.SuspendLayout();
@@ -134,7 +134,7 @@
             this.groupBox1.Controls.Add(this.TxtId);
             this.groupBox1.Location = new System.Drawing.Point(17, 18);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(895, 137);
+            this.groupBox1.Size = new System.Drawing.Size(1145, 137);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cabecera";
@@ -424,7 +424,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1171, 606);
+            this.tabPage1.Size = new System.Drawing.Size(1181, 665);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -444,12 +444,11 @@
             this.TabGeneral.Location = new System.Drawing.Point(17, 12);
             this.TabGeneral.Name = "TabGeneral";
             this.TabGeneral.SelectedIndex = 0;
-            this.TabGeneral.Size = new System.Drawing.Size(1179, 632);
+            this.TabGeneral.Size = new System.Drawing.Size(1189, 691);
             this.TabGeneral.TabIndex = 2;
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.PanelArticulos);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.BtnCancelar);
@@ -457,10 +456,31 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1171, 606);
+            this.tabPage2.Size = new System.Drawing.Size(1181, 665);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.PanelArticulos);
+            this.groupBox2.Controls.Add(this.TxtTotal);
+            this.groupBox2.Controls.Add(this.TxtTotalImpuesto);
+            this.groupBox2.Controls.Add(this.TxtSubTotal);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.DgvDetalle);
+            this.groupBox2.Controls.Add(this.BtnVerArticulos);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.TxtNombre);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Location = new System.Drawing.Point(17, 161);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1145, 456);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Detalle";
             // 
             // PanelArticulos
             // 
@@ -471,7 +491,7 @@
             this.PanelArticulos.Controls.Add(this.BtnFiltrarArticulos);
             this.PanelArticulos.Controls.Add(this.TxtBuscarArticulo);
             this.PanelArticulos.Controls.Add(this.label11);
-            this.PanelArticulos.Location = new System.Drawing.Point(64, 224);
+            this.PanelArticulos.Location = new System.Drawing.Point(47, 51);
             this.PanelArticulos.Name = "PanelArticulos";
             this.PanelArticulos.Size = new System.Drawing.Size(1069, 393);
             this.PanelArticulos.TabIndex = 10;
@@ -538,26 +558,6 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "Buscar";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.TxtTotal);
-            this.groupBox2.Controls.Add(this.TxtTotalImpuesto);
-            this.groupBox2.Controls.Add(this.TxtSubTotal);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.DgvDetalle);
-            this.groupBox2.Controls.Add(this.BtnVerArticulos);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.TxtNombre);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Location = new System.Drawing.Point(17, 161);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(895, 430);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Detalle";
-            // 
             // TxtTotal
             // 
             this.TxtTotal.Enabled = false;
@@ -618,6 +618,7 @@
             this.DgvDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvDetalle.Size = new System.Drawing.Size(871, 225);
             this.DgvDetalle.TabIndex = 3;
+            this.DgvDetalle.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvDetalle_CellEndEdit);
             // 
             // label3
             // 
@@ -636,6 +637,7 @@
             this.BtnCancelar.TabIndex = 6;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // BtnInsertar
             // 
@@ -645,6 +647,7 @@
             this.BtnInsertar.TabIndex = 5;
             this.BtnInsertar.Text = "Insertar";
             this.BtnInsertar.UseVisualStyleBackColor = true;
+            this.BtnInsertar.Click += new System.EventHandler(this.BtnInsertar_Click);
             // 
             // ErrorIcono
             // 
@@ -655,7 +658,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1208, 656);
+            this.ClientSize = new System.Drawing.Size(1218, 706);
             this.Controls.Add(this.TabGeneral);
             this.Name = "FrmVenta";
             this.Text = "Ventas";
@@ -670,11 +673,11 @@
             this.tabPage1.PerformLayout();
             this.TabGeneral.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.PanelArticulos.ResumeLayout(false);
             this.PanelArticulos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvArticulos)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).EndInit();
             this.ResumeLayout(false);

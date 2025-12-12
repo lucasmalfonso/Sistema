@@ -141,7 +141,6 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.PanelArticulos);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.BtnCancelar);
@@ -163,7 +162,7 @@
             this.PanelArticulos.Controls.Add(this.BtnFiltrarArticulos);
             this.PanelArticulos.Controls.Add(this.TxtBuscarArticulo);
             this.PanelArticulos.Controls.Add(this.label11);
-            this.PanelArticulos.Location = new System.Drawing.Point(64, 224);
+            this.PanelArticulos.Location = new System.Drawing.Point(66, 53);
             this.PanelArticulos.Name = "PanelArticulos";
             this.PanelArticulos.Size = new System.Drawing.Size(1069, 393);
             this.PanelArticulos.TabIndex = 10;
@@ -232,6 +231,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.PanelArticulos);
             this.groupBox2.Controls.Add(this.TxtTotal);
             this.groupBox2.Controls.Add(this.TxtTotalImpuesto);
             this.groupBox2.Controls.Add(this.TxtSubTotal);

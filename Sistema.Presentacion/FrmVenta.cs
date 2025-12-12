@@ -246,5 +246,61 @@ namespace Sistema.Presentacion
             Precio = Convert.ToDecimal(DgvArticulos.CurrentRow.Cells["Precio_Venta"].Value);
             this.AgregarDetalle(IdArticulo, Nombre,Stock ,Precio);
         }
+        private void DgvDetalle_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DataRow Fila = (DataRow)DtDetalle.Rows[e.RowIndex];
+            string Articulo = Convert.ToString(Fila["articulo"]);
+            int Cantidad = Convert.ToInt32(Fila["cantidad"]);
+            int Stock = Convert.ToInt32(Fila["stock"]);
+            decimal Precio = Convert.ToDecimal(Fila["precio"]);
+            decimal Descuento = Convert.ToDecimal(Fila["descuento"]);
+            if (Cantidad>Stock)
+            {   
+                Cantidad = Stock;
+                this.MensajeError("La cantidad de venta del articulo " + Articulo + " supera el stock disponible " + Stock);
+            }
+            Fila["importe"] = (Cantidad * Precio) - Descuento;
+            this.CalcularTotales();
+        }
+
+        private void BtnInsertar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string Rpta = "";
+                if (TxtIdCliente.Text == String.Empty || TxtImpuesto.Text == string.Empty || TxtNumComprobate.Text == string.Empty || DtDetalle.Rows.Count == 0)
+                {
+                    this.MensajeError("Falta ingresar algunos datos, serán remarcados");
+                    ErrorIcono.SetError(TxtIdCliente, "Seleccione un cliente");
+                    ErrorIcono.SetError(TxtImpuesto, "Ingrese el impuesto");
+                    ErrorIcono.SetError(TxtNumComprobate, "Ingrese el número de comprobante");
+                    ErrorIcono.SetError(DgvDetalle, "Ingrese los detalles del ingreso");
+                }
+                else
+                {
+                    Rpta = NVenta.Insertar(Convert.ToInt32(TxtIdCliente.Text), Variables.IdUsuario, CboComprobante.Text, TxtSerieComprobante.Text.Trim(), TxtNumComprobate.Text.Trim(), Convert.ToDecimal(TxtImpuesto.Text), Convert.ToDecimal(TxtTotal.Text), DtDetalle);
+                    if (Rpta.Equals("OK"))
+                    {
+                        this.MensajeOk("Se insertó de forma correcta el registro");
+                        this.Limpiar();
+                        this.Listar();
+                    }
+                    else
+                    {
+                        this.MensajeError(Rpta);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Limpiar();
+            TabGeneral.SelectedIndex = 0;
+        }
     }
 }
