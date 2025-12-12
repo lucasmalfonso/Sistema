@@ -131,27 +131,22 @@ namespace Sistema.Presentacion
             this.Listar();
             this.CrearTabla();
         }
-
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             this.Buscar();
         }
-
         private void label6_Click(object sender, EventArgs e)
         {
 
         }
-
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private void label2_Click(object sender, EventArgs e)
         {
 
         }
-
         private void BtnBuscarProveedor_Click(object sender, EventArgs e)
         {
             FrmVista_ProveedorIngreso vista = new FrmVista_ProveedorIngreso();
@@ -159,7 +154,6 @@ namespace Sistema.Presentacion
             TxtIdProveedor.Text = Convert.ToString(Variables.IdProveedor);
             TxtNombreProveedor.Text = Variables.NombreProveedor;
         }
-
         private void TxtNombre_KeyDown(object sender, KeyEventArgs e)
         {
             try
@@ -183,7 +177,6 @@ namespace Sistema.Presentacion
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void AgregarDetalle(int IdArticulo, string Nombre, decimal Precio)
         {
             bool Agregar = true;
@@ -233,27 +226,23 @@ namespace Sistema.Presentacion
         {
 
         }
-
         private void TxtNombre_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private void BtnVerArticulos_Click(object sender, EventArgs e)
         {
             PanelArticulos.Visible = true;
         }
-
         private void BtnCerrarArticulos_Click(object sender, EventArgs e)
         {
             PanelArticulos.Visible = false;
         }
-
         private void BtnFiltrarArticulos_Click(object sender, EventArgs e)
         {
             try
             {
-                DgvArticulos.DataSource = NArticulo.Buscar(TxtBuscarArticulo.Text.Trim());
+                DgvArticulos.DataSource = NArticulo.BuscarVenta(TxtBuscarArticulo.Text.Trim());
                 this.FormatoArticulos();
                 LblTotalArticulos.Text = "Total Registros: " + Convert.ToString(DgvArticulos.Rows.Count);
             }
@@ -262,7 +251,6 @@ namespace Sistema.Presentacion
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void DgvArticulos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int IdArticulo;
@@ -273,7 +261,6 @@ namespace Sistema.Presentacion
             Precio = Convert.ToDecimal(DgvArticulos.CurrentRow.Cells["Precio_Venta"].Value);
             this.AgregarDetalle(IdArticulo, Nombre, Precio);
         }
-
         private void DgvDetalle_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             DataRow Fila = (DataRow)DtDetalle.Rows[e.RowIndex];
@@ -282,12 +269,10 @@ namespace Sistema.Presentacion
             Fila["importe"] = Precio * Cantidad;
             this.CalcularTotales();
         }
-
         private void DgvDetalle_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
             this.CalcularTotales();
         }
-
         private void BtnInsertar_Click(object sender, EventArgs e)
         {
             try
@@ -321,12 +306,10 @@ namespace Sistema.Presentacion
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
-
         private void label12_Click(object sender, EventArgs e)
         {
 
         }
-
         private void DgvListado_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -346,7 +329,6 @@ namespace Sistema.Presentacion
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void DgvListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == DgvListado.Columns["Seleccionar"].Index)
@@ -355,18 +337,15 @@ namespace Sistema.Presentacion
                 ChkEliminar.Value = !Convert.ToBoolean(ChkEliminar.Value);
             }
         }
-
         private void BtnCerrarDetalle_Click(object sender, EventArgs e)
         {
             PanelMostrar.Visible = false;
         }
-
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Limpiar();
             TabGeneral.SelectedIndex = 0;
         }
-
         private void ChkSeleccionar_CheckedChanged(object sender, EventArgs e)
         {
             if (ChkSeleccionar.Checked)
@@ -381,7 +360,6 @@ namespace Sistema.Presentacion
                 BtnAnular.Visible = false;
             }
         }
-
         private void BtnAnular_Click(object sender, EventArgs e)
         {
             try
@@ -419,7 +397,6 @@ namespace Sistema.Presentacion
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
-
         private void PanelMostrar_Paint(object sender, PaintEventArgs e)
         {
 

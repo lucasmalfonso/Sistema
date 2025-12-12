@@ -31,7 +31,6 @@ namespace Sistema.Datos
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
         }
-
         public DataTable Buscar(string Valor)
         {
             SqlDataReader Resultado;
@@ -57,7 +56,31 @@ namespace Sistema.Datos
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
         }
-
+        public DataTable BuscarVenta(string Valor)
+        {
+            SqlDataReader Resultado;
+            DataTable Tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand Comando = new SqlCommand("articulo_buscar_venta", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("@valor", SqlDbType.VarChar).Value = Valor;
+                SqlCon.Open();
+                Resultado = Comando.ExecuteReader();
+                Tabla.Load(Resultado);
+                return Tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
         public DataTable BuscarNombre(string Valor)
         {
             SqlDataReader Resultado;
@@ -83,7 +106,31 @@ namespace Sistema.Datos
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
         }
-
+        public DataTable BuscarNombreVenta(string Valor)
+        {
+            SqlDataReader Resultado;
+            DataTable Tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand Comando = new SqlCommand("articulo_buscar_nombre_venta", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("@valor", SqlDbType.VarChar).Value = Valor;
+                SqlCon.Open();
+                Resultado = Comando.ExecuteReader();
+                Tabla.Load(Resultado);
+                return Tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
         public string Existe(string Valor)
         {
             string Rpta = "";
@@ -113,7 +160,6 @@ namespace Sistema.Datos
             }
             return Rpta;
         }
-
         public string Insertar(Articulo Obj)
         {
             string Rpta = "";
@@ -142,7 +188,6 @@ namespace Sistema.Datos
             }
             return Rpta;
         }
-
         public string Actualizar(Articulo Obj)
         {
             string Rpta = "";
@@ -172,7 +217,6 @@ namespace Sistema.Datos
             }
             return Rpta;
         }
-
         public string Eliminar(int Id)
         {
             string Rpta = "";
@@ -196,7 +240,6 @@ namespace Sistema.Datos
             }
             return Rpta;
         }
-
         public string Activar(int Id)
         {
             string Rpta = "";
@@ -220,7 +263,6 @@ namespace Sistema.Datos
             }
             return Rpta;
         }
-
         public string Desactivar(int Id)
         {
             string Rpta = "";

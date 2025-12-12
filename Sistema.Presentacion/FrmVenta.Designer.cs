@@ -106,6 +106,7 @@
             this.BtnVerArticulos.TabIndex = 2;
             this.BtnVerArticulos.Text = "Ver";
             this.BtnVerArticulos.UseVisualStyleBackColor = true;
+            this.BtnVerArticulos.Click += new System.EventHandler(this.BtnVerArticulos_Click);
             // 
             // label7
             // 
@@ -434,6 +435,7 @@
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(454, 20);
             this.TxtNombre.TabIndex = 1;
+            this.TxtNombre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtNombre_KeyDown);
             // 
             // TabGeneral
             // 
@@ -496,6 +498,7 @@
             this.DgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvArticulos.Size = new System.Drawing.Size(1028, 284);
             this.DgvArticulos.TabIndex = 4;
+            this.DgvArticulos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvArticulos_CellDoubleClick);
             // 
             // BtnCerrarArticulos
             // 
@@ -507,6 +510,7 @@
             this.BtnCerrarArticulos.TabIndex = 3;
             this.BtnCerrarArticulos.Text = "X";
             this.BtnCerrarArticulos.UseVisualStyleBackColor = true;
+            this.BtnCerrarArticulos.Click += new System.EventHandler(this.BtnCerrarArticulos_Click);
             // 
             // BtnFiltrarArticulos
             // 
@@ -516,6 +520,7 @@
             this.BtnFiltrarArticulos.TabIndex = 2;
             this.BtnFiltrarArticulos.Text = "Buscar";
             this.BtnFiltrarArticulos.UseVisualStyleBackColor = true;
+            this.BtnFiltrarArticulos.Click += new System.EventHandler(this.BtnFiltrarArticulos_Click);
             // 
             // TxtBuscarArticulo
             // 
