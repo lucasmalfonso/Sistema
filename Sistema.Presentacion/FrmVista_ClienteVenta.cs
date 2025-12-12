@@ -1,33 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema.Negocio;
 
 namespace Sistema.Presentacion
 {
-    public partial class FrmVista_ProveedorIngreso : Form
+    public partial class FrmVista_ClienteVenta : Form
     {
-        public FrmVista_ProveedorIngreso()
+        public FrmVista_ClienteVenta()
         {
             InitializeComponent();
-        }
-        private void Listar()
-        {
-            try
-            {
-                DgvListado.DataSource = NPersona.ListarProveedores();
-                this.Formato();
-                LblTotal.Text = "Total Registros: " + Convert.ToString(DgvListado.Rows.Count);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + ex.StackTrace);
-            }
         }
         private void Buscar()
         {
             try
             {
-                DgvListado.DataSource = NPersona.BuscarProveedores(TxtBuscar.Text);
+                DgvListado.DataSource = NPersona.BuscarClientes(TxtBuscar.Text);
                 this.Formato();
                 LblTotal.Text = "Total Registros: " + Convert.ToString(DgvListado.Rows.Count);
             }
@@ -54,18 +48,21 @@ namespace Sistema.Presentacion
             DgvListado.Columns[8].Width = 120;
 
         }
-        private void FrmVista_ProveedorIngreso_Load(object sender, EventArgs e)
+
+        private void FrmVista_ClienteVenta_Load(object sender, EventArgs e)
         {
-            //this.Listar();
+
         }
+
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             this.Buscar();
         }
+
         private void DgvListado_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Variables.IdProveedor = Convert.ToInt32(DgvListado.CurrentRow.Cells["ID"].Value);
-            Variables.NombreProveedor = Convert.ToString(DgvListado.CurrentRow.Cells["Nombre"].Value);
+            Variables.IdCliente = Convert.ToInt32(DgvListado.CurrentRow.Cells["ID"].Value);
+            Variables.NombreCliente = Convert.ToString(DgvListado.CurrentRow.Cells["Nombre"].Value);
             this.Close();
         }
     }

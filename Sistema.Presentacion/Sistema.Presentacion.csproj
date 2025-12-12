@@ -106,6 +106,12 @@
     <Compile Include="FrmVenta.Designer.cs">
       <DependentUpon>FrmVenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmVista_ClienteVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVista_ClienteVenta.Designer.cs">
+      <DependentUpon>FrmVista_ClienteVenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmVista_ProveedorIngreso.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmVenta.resx">
       <DependentUpon>FrmVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVista_ClienteVenta.resx">
+      <DependentUpon>FrmVista_ClienteVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmVista_ProveedorIngreso.resx">
       <DependentUpon>FrmVista_ProveedorIngreso.cs</DependentUpon>

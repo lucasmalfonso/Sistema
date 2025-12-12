@@ -68,8 +68,8 @@ namespace Sistema.Presentacion
         {
             TxtBuscar.Clear();
             TxtId.Clear();
-            TxtIdProveedor.Clear();
-            TxtNombreProveedor.Clear();
+            TxtIdCliente.Clear();
+            TxtNombreCliente.Clear();
             TxtSerieComprobante.Clear();
             TxtNumComprobate.Clear();
             DtDetalle.Clear();
@@ -98,6 +98,15 @@ namespace Sistema.Presentacion
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             this.Buscar();
+        }
+
+        private void BtnBuscarCliente_Click(object sender, EventArgs e)
+        {
+            FrmVista_ClienteVenta vista = new FrmVista_ClienteVenta();
+            vista.ShowDialog();
+            TxtIdCliente.Text = Convert.ToString(Variables.IdCliente);
+            TxtNombreCliente.Text = Variables.NombreCliente;
+
         }
     }
 }
