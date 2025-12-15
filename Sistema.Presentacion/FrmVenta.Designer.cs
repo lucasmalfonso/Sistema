@@ -264,6 +264,7 @@
             this.BtnCerrarDetalle.TabIndex = 1;
             this.BtnCerrarDetalle.Text = "X";
             this.BtnCerrarDetalle.UseVisualStyleBackColor = true;
+            this.BtnCerrarDetalle.Click += new System.EventHandler(this.BtnCerrarDetalle_Click);
             // 
             // Seleccionar
             // 
@@ -359,6 +360,7 @@
             this.BtnAnular.TabIndex = 6;
             this.BtnAnular.Text = "Anular";
             this.BtnAnular.UseVisualStyleBackColor = true;
+            this.BtnAnular.Click += new System.EventHandler(this.BtnAnular_Click);
             // 
             // ChkSeleccionar
             // 
@@ -369,6 +371,7 @@
             this.ChkSeleccionar.TabIndex = 4;
             this.ChkSeleccionar.Text = "Seleccionar";
             this.ChkSeleccionar.UseVisualStyleBackColor = true;
+            this.ChkSeleccionar.CheckedChanged += new System.EventHandler(this.ChkSeleccionar_CheckedChanged);
             // 
             // BtnBuscar
             // 
@@ -411,6 +414,8 @@
             this.DgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListado.Size = new System.Drawing.Size(1141, 395);
             this.DgvListado.TabIndex = 0;
+            this.DgvListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellContentClick);
+            this.DgvListado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellDoubleClick);
             // 
             // tabPage1
             // 
