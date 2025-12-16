@@ -61,6 +61,7 @@
             this.TxtBuscar = new System.Windows.Forms.TextBox();
             this.LblTotal = new System.Windows.Forms.Label();
             this.DgvListado = new System.Windows.Forms.DataGridView();
+            this.BtnReporte = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicImagen)).BeginInit();
@@ -285,6 +286,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.BtnReporte);
             this.tabPage1.Controls.Add(this.BtnEliminar);
             this.tabPage1.Controls.Add(this.BtnDesactivar);
             this.tabPage1.Controls.Add(this.BtnActivar);
@@ -386,6 +388,16 @@
             this.DgvListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellContentClick);
             this.DgvListado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellDoubleClick);
             // 
+            // BtnReporte
+            // 
+            this.BtnReporte.Location = new System.Drawing.Point(857, 16);
+            this.BtnReporte.Name = "BtnReporte";
+            this.BtnReporte.Size = new System.Drawing.Size(75, 23);
+            this.BtnReporte.TabIndex = 8;
+            this.BtnReporte.Text = "Reporte";
+            this.BtnReporte.UseVisualStyleBackColor = true;
+            this.BtnReporte.Click += new System.EventHandler(this.BtnReporte_Click);
+            // 
             // FrmArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -442,5 +454,6 @@
         private System.Windows.Forms.TextBox TxtPrecioVenta;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button BtnReporte;
     }
 }
