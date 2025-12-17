@@ -153,7 +153,7 @@ namespace Sistema.Presentacion
                 MessageBox.Show(ex.Message);
             }
         }
-        private void AgregarDetalle(int IdArticulo, string Nombre,int Stock ,decimal Precio)
+        private void AgregarDetalle(int IdArticulo, string Nombre, int Stock, decimal Precio)
         {
             bool Agregar = true;
             foreach (DataRow FilaTemp in this.DtDetalle.Rows)
@@ -244,7 +244,7 @@ namespace Sistema.Presentacion
             Nombre = Convert.ToString(DgvArticulos.CurrentRow.Cells["Nombre"].Value);
             Stock = Convert.ToInt32(DgvArticulos.CurrentRow.Cells["Stock"].Value);
             Precio = Convert.ToDecimal(DgvArticulos.CurrentRow.Cells["Precio_Venta"].Value);
-            this.AgregarDetalle(IdArticulo, Nombre,Stock ,Precio);
+            this.AgregarDetalle(IdArticulo, Nombre, Stock, Precio);
         }
         private void DgvDetalle_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -254,8 +254,8 @@ namespace Sistema.Presentacion
             int Stock = Convert.ToInt32(Fila["stock"]);
             decimal Precio = Convert.ToDecimal(Fila["precio"]);
             decimal Descuento = Convert.ToDecimal(Fila["descuento"]);
-            if (Cantidad>Stock)
-            {   
+            if (Cantidad > Stock)
+            {
                 Cantidad = Stock;
                 this.MensajeError("La cantidad de venta del articulo " + Articulo + " supera el stock disponible " + Stock);
             }
@@ -388,6 +388,20 @@ namespace Sistema.Presentacion
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void BtnComprobante_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Variables.IdVenta = Convert.ToInt32(DgvListado.CurrentRow.Cells["ID"].Value);
+                Reportes.FrmReporteComprobanteVenta reporte = new Reportes.FrmReporteComprobanteVenta();
+                reporte.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

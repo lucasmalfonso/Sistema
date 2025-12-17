@@ -84,6 +84,7 @@
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnInsertar = new System.Windows.Forms.Button();
             this.ErrorIcono = new System.Windows.Forms.ErrorProvider(this.components);
+            this.BtnComprobante = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.PanelMostrar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMostrarDetalle)).BeginInit();
@@ -419,6 +420,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.BtnComprobante);
             this.tabPage1.Controls.Add(this.PanelMostrar);
             this.tabPage1.Controls.Add(this.BtnAnular);
             this.tabPage1.Controls.Add(this.ChkSeleccionar);
@@ -658,6 +660,16 @@
             // 
             this.ErrorIcono.ContainerControl = this;
             // 
+            // BtnComprobante
+            // 
+            this.BtnComprobante.Location = new System.Drawing.Point(839, 17);
+            this.BtnComprobante.Name = "BtnComprobante";
+            this.BtnComprobante.Size = new System.Drawing.Size(117, 23);
+            this.BtnComprobante.TabIndex = 8;
+            this.BtnComprobante.Text = "Comprobante";
+            this.BtnComprobante.UseVisualStyleBackColor = true;
+            this.BtnComprobante.Click += new System.EventHandler(this.BtnComprobante_Click);
+            // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -746,5 +758,6 @@
         private System.Windows.Forms.Button BtnCancelar;
         private System.Windows.Forms.Button BtnInsertar;
         private System.Windows.Forms.ErrorProvider ErrorIcono;
+        private System.Windows.Forms.Button BtnComprobante;
     }
 }
