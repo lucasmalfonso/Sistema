@@ -26,8 +26,8 @@ namespace Sistema.Presentacion.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost\\SQLEXPRESS01;Initial Catalog=dbsistema;Integrated Security=" +
-            "True;TrustServerCertificate=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost\\SQLEXPRESS01;Initial Catalog=dbsistemaprod;Integrated Secur" +
+            "ity=True;TrustServerCertificate=True")]
         public string cn {
             get {
                 return ((string)(this["cn"]));

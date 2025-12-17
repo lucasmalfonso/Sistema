@@ -18,7 +18,7 @@ namespace Sistema.Datos
 
         private Conexion()
         {
-            this.Base = "dbsistema";
+            this.Base = "dbsistemaprod";
             this.Servidor = "UCSAMARNBP03085\\SQLEXPRESS01";
             this.Usuario = "sa";
             this.Clave = "vigencia26";
