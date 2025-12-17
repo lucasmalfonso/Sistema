@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using Sistema.Datos;
 using Sistema.Entidades;
 
@@ -15,6 +16,11 @@ namespace Sistema.Negocio
         {
             DVenta Datos = new DVenta();
             return Datos.Buscar(Valor);
+        }
+        public static DataTable ConsultaFechas(DateTime FechaInicio,DateTime FechaFin)
+        {
+            DVenta Datos = new DVenta();
+            return Datos.ConsultaFechas(FechaInicio,FechaFin);
         }
         public static DataTable ListarDetalle(int Id)
         {

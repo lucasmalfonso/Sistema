@@ -152,14 +152,14 @@
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.clientesToolStripMenuItem.Text = "Clien&tes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // ventasToolStripMenuItem1
             // 
             this.ventasToolStripMenuItem1.Name = "ventasToolStripMenuItem1";
-            this.ventasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.ventasToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
             this.ventasToolStripMenuItem1.Text = "&Ventas";
             this.ventasToolStripMenuItem1.Click += new System.EventHandler(this.ventasToolStripMenuItem1_Click);
             // 
@@ -198,13 +198,14 @@
             // consultasVentasToolStripMenuItem
             // 
             this.consultasVentasToolStripMenuItem.Name = "consultasVentasToolStripMenuItem";
-            this.consultasVentasToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.consultasVentasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.consultasVentasToolStripMenuItem.Text = "Consultas Ventas";
+            this.consultasVentasToolStripMenuItem.Click += new System.EventHandler(this.consultasVentasToolStripMenuItem_Click);
             // 
             // consultaComprasToolStripMenuItem
             // 
             this.consultaComprasToolStripMenuItem.Name = "consultaComprasToolStripMenuItem";
-            this.consultaComprasToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.consultaComprasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.consultaComprasToolStripMenuItem.Text = "Consulta Compras";
             // 
             // viewMenu

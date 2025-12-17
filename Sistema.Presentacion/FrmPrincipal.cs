@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sistema.Presentacion
@@ -238,6 +231,13 @@ namespace Sistema.Presentacion
         private void ventasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FrmVenta frm = new FrmVenta();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void consultasVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmConsulta_VentaFechas frm = new FrmConsulta_VentaFechas();
             frm.MdiParent = this;
             frm.Show();
         }
