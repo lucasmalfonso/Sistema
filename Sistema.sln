@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sistema.Datos", "Sistema.Da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sistema.Entidades", "Sistema.Entidades\Sistema.Entidades.csproj", "{37A6D957-F98E-4834-ACA1-0ED5C0BD93CA}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Sistema.Database", "Sistema.Database\Sistema.Database.sqlproj", "{636FAA02-2518-4DCF-8F5C-B866FA603FBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,12 @@ Global
 		{37A6D957-F98E-4834-ACA1-0ED5C0BD93CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37A6D957-F98E-4834-ACA1-0ED5C0BD93CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37A6D957-F98E-4834-ACA1-0ED5C0BD93CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{636FAA02-2518-4DCF-8F5C-B866FA603FBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{636FAA02-2518-4DCF-8F5C-B866FA603FBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{636FAA02-2518-4DCF-8F5C-B866FA603FBB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{636FAA02-2518-4DCF-8F5C-B866FA603FBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{636FAA02-2518-4DCF-8F5C-B866FA603FBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{636FAA02-2518-4DCF-8F5C-B866FA603FBB}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
