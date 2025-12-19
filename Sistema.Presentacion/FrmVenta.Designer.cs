@@ -62,6 +62,7 @@
             this.LblTotal = new System.Windows.Forms.Label();
             this.DgvListado = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.BtnComprobante = new System.Windows.Forms.Button();
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.TabGeneral = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -84,7 +85,11 @@
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnInsertar = new System.Windows.Forms.Button();
             this.ErrorIcono = new System.Windows.Forms.ErrorProvider(this.components);
-            this.BtnComprobante = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.CboFormadePago = new System.Windows.Forms.ComboBox();
+            this.CboCuota = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.PanelMostrar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMostrarDetalle)).BeginInit();
@@ -97,6 +102,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnVerArticulos
@@ -431,10 +437,20 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1181, 665);
+            this.tabPage1.Size = new System.Drawing.Size(1215, 796);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // BtnComprobante
+            // 
+            this.BtnComprobante.Location = new System.Drawing.Point(839, 17);
+            this.BtnComprobante.Name = "BtnComprobante";
+            this.BtnComprobante.Size = new System.Drawing.Size(117, 23);
+            this.BtnComprobante.TabIndex = 8;
+            this.BtnComprobante.Text = "Comprobante";
+            this.BtnComprobante.UseVisualStyleBackColor = true;
+            this.BtnComprobante.Click += new System.EventHandler(this.BtnComprobante_Click);
             // 
             // TxtNombre
             // 
@@ -451,11 +467,12 @@
             this.TabGeneral.Location = new System.Drawing.Point(17, 12);
             this.TabGeneral.Name = "TabGeneral";
             this.TabGeneral.SelectedIndex = 0;
-            this.TabGeneral.Size = new System.Drawing.Size(1189, 691);
+            this.TabGeneral.Size = new System.Drawing.Size(1223, 822);
             this.TabGeneral.TabIndex = 2;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.BtnCancelar);
@@ -463,7 +480,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1181, 665);
+            this.tabPage2.Size = new System.Drawing.Size(1215, 796);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -482,23 +499,23 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.TxtNombre);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Location = new System.Drawing.Point(17, 161);
+            this.groupBox2.Location = new System.Drawing.Point(17, 289);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1145, 456);
+            this.groupBox2.Size = new System.Drawing.Size(1145, 432);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle";
             // 
             // PanelArticulos
             // 
-            this.PanelArticulos.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.PanelArticulos.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.PanelArticulos.Controls.Add(this.LblTotalArticulos);
             this.PanelArticulos.Controls.Add(this.DgvArticulos);
             this.PanelArticulos.Controls.Add(this.BtnCerrarArticulos);
             this.PanelArticulos.Controls.Add(this.BtnFiltrarArticulos);
             this.PanelArticulos.Controls.Add(this.TxtBuscarArticulo);
             this.PanelArticulos.Controls.Add(this.label11);
-            this.PanelArticulos.Location = new System.Drawing.Point(47, 51);
+            this.PanelArticulos.Location = new System.Drawing.Point(66, 39);
             this.PanelArticulos.Name = "PanelArticulos";
             this.PanelArticulos.Size = new System.Drawing.Size(1069, 393);
             this.PanelArticulos.TabIndex = 10;
@@ -518,6 +535,7 @@
             this.DgvArticulos.AllowUserToAddRows = false;
             this.DgvArticulos.AllowUserToDeleteRows = false;
             this.DgvArticulos.AllowUserToOrderColumns = true;
+            this.DgvArticulos.BackgroundColor = System.Drawing.SystemColors.Control;
             this.DgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvArticulos.Location = new System.Drawing.Point(22, 54);
             this.DgvArticulos.Name = "DgvArticulos";
@@ -529,14 +547,15 @@
             // 
             // BtnCerrarArticulos
             // 
+            this.BtnCerrarArticulos.BackColor = System.Drawing.Color.Red;
             this.BtnCerrarArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCerrarArticulos.ForeColor = System.Drawing.Color.Red;
-            this.BtnCerrarArticulos.Location = new System.Drawing.Point(975, 9);
+            this.BtnCerrarArticulos.ForeColor = System.Drawing.Color.White;
+            this.BtnCerrarArticulos.Location = new System.Drawing.Point(1016, 5);
             this.BtnCerrarArticulos.Name = "BtnCerrarArticulos";
-            this.BtnCerrarArticulos.Size = new System.Drawing.Size(75, 30);
+            this.BtnCerrarArticulos.Size = new System.Drawing.Size(34, 27);
             this.BtnCerrarArticulos.TabIndex = 3;
             this.BtnCerrarArticulos.Text = "X";
-            this.BtnCerrarArticulos.UseVisualStyleBackColor = true;
+            this.BtnCerrarArticulos.UseVisualStyleBackColor = false;
             this.BtnCerrarArticulos.Click += new System.EventHandler(this.BtnCerrarArticulos_Click);
             // 
             // BtnFiltrarArticulos
@@ -638,7 +657,7 @@
             // 
             // BtnCancelar
             // 
-            this.BtnCancelar.Location = new System.Drawing.Point(238, 623);
+            this.BtnCancelar.Location = new System.Drawing.Point(215, 748);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(93, 23);
             this.BtnCancelar.TabIndex = 6;
@@ -648,7 +667,7 @@
             // 
             // BtnInsertar
             // 
-            this.BtnInsertar.Location = new System.Drawing.Point(83, 624);
+            this.BtnInsertar.Location = new System.Drawing.Point(72, 748);
             this.BtnInsertar.Name = "BtnInsertar";
             this.BtnInsertar.Size = new System.Drawing.Size(98, 23);
             this.BtnInsertar.TabIndex = 5;
@@ -660,22 +679,69 @@
             // 
             this.ErrorIcono.ContainerControl = this;
             // 
-            // BtnComprobante
+            // groupBox3
             // 
-            this.BtnComprobante.Location = new System.Drawing.Point(839, 17);
-            this.BtnComprobante.Name = "BtnComprobante";
-            this.BtnComprobante.Size = new System.Drawing.Size(117, 23);
-            this.BtnComprobante.TabIndex = 8;
-            this.BtnComprobante.Text = "Comprobante";
-            this.BtnComprobante.UseVisualStyleBackColor = true;
-            this.BtnComprobante.Click += new System.EventHandler(this.BtnComprobante_Click);
+            this.groupBox3.Controls.Add(this.CboCuota);
+            this.groupBox3.Controls.Add(this.CboFormadePago);
+            this.groupBox3.Controls.Add(this.label16);
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Location = new System.Drawing.Point(17, 171);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(1145, 100);
+            this.groupBox3.TabIndex = 10;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Medio de Pago";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(77, 27);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(79, 13);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "Forma de Pago";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(413, 27);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(35, 13);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "Cuota";
+            // 
+            // CboFormadePago
+            // 
+            this.CboFormadePago.FormattingEnabled = true;
+            this.CboFormadePago.Items.AddRange(new object[] {
+            "EFECTIVO",
+            "TRANSFERENCIA",
+            "MERCADO PAGO",
+            "TARJETA DE CREDITO",
+            "TARJETA DE DEBITO"});
+            this.CboFormadePago.Location = new System.Drawing.Point(80, 44);
+            this.CboFormadePago.Name = "CboFormadePago";
+            this.CboFormadePago.Size = new System.Drawing.Size(170, 21);
+            this.CboFormadePago.TabIndex = 2;
+            // 
+            // CboCuota
+            // 
+            this.CboCuota.FormattingEnabled = true;
+            this.CboCuota.Items.AddRange(new object[] {
+            "1 CUOTA",
+            "2 CUOTAS",
+            "3 CUOTAS"});
+            this.CboCuota.Location = new System.Drawing.Point(416, 44);
+            this.CboCuota.Name = "CboCuota";
+            this.CboCuota.Size = new System.Drawing.Size(97, 21);
+            this.CboCuota.TabIndex = 3;
             // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1218, 706);
+            this.ClientSize = new System.Drawing.Size(1252, 846);
             this.Controls.Add(this.TabGeneral);
             this.Name = "FrmVenta";
             this.Text = "Ventas";
@@ -697,6 +763,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.DgvArticulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -759,5 +827,10 @@
         private System.Windows.Forms.Button BtnInsertar;
         private System.Windows.Forms.ErrorProvider ErrorIcono;
         private System.Windows.Forms.Button BtnComprobante;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox CboCuota;
+        private System.Windows.Forms.ComboBox CboFormadePago;
     }
 }

@@ -9,6 +9,8 @@
     [impuesto]          DECIMAL (4, 2)  NOT NULL,
     [total]             DECIMAL (11, 2) NOT NULL,
     [estado]            VARCHAR (20)    NOT NULL,
+    [forma_pago]        VARCHAR (50)    NULL,
+    [cuota]             VARCHAR (20)    NULL,
     PRIMARY KEY CLUSTERED ([idventa] ASC),
     FOREIGN KEY ([idcliente]) REFERENCES [dbo].[persona] ([idpersona]),
     FOREIGN KEY ([idusuario]) REFERENCES [dbo].[usuario] ([idusuario])

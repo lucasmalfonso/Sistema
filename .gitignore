@@ -7,5 +7,14 @@ obj/
 *.user
 *.suo
 
-# Otros
+# Archivos de base de datos generados
+*.dbmdl
+*.dacpac
+*.pdb
+*.jfm
+
+# Archivos de log
 *.log
+
+# Archivos de SQL Server Database Project
+**/Registros de importación de esquemas/
