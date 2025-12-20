@@ -66,6 +66,11 @@
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.TabGeneral = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.CboCuota = new System.Windows.Forms.ComboBox();
+            this.CboFormadePago = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.PanelArticulos = new System.Windows.Forms.Panel();
             this.LblTotalArticulos = new System.Windows.Forms.Label();
@@ -85,11 +90,8 @@
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnInsertar = new System.Windows.Forms.Button();
             this.ErrorIcono = new System.Windows.Forms.ErrorProvider(this.components);
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.CboFormadePago = new System.Windows.Forms.ComboBox();
-            this.CboCuota = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.CboMoneda = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.PanelMostrar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMostrarDetalle)).BeginInit();
@@ -97,12 +99,12 @@
             this.tabPage1.SuspendLayout();
             this.TabGeneral.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.PanelArticulos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnVerArticulos
@@ -485,6 +487,66 @@
             this.tabPage2.Text = "Mantenimiento";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.CboMoneda);
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.Controls.Add(this.CboCuota);
+            this.groupBox3.Controls.Add(this.CboFormadePago);
+            this.groupBox3.Controls.Add(this.label16);
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Location = new System.Drawing.Point(17, 171);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(1145, 100);
+            this.groupBox3.TabIndex = 10;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Medio de Pago";
+            // 
+            // CboCuota
+            // 
+            this.CboCuota.FormattingEnabled = true;
+            this.CboCuota.Items.AddRange(new object[] {
+            "1 CUOTA",
+            "2 CUOTAS",
+            "3 CUOTAS"});
+            this.CboCuota.Location = new System.Drawing.Point(545, 44);
+            this.CboCuota.Name = "CboCuota";
+            this.CboCuota.Size = new System.Drawing.Size(97, 21);
+            this.CboCuota.TabIndex = 3;
+            // 
+            // CboFormadePago
+            // 
+            this.CboFormadePago.FormattingEnabled = true;
+            this.CboFormadePago.Items.AddRange(new object[] {
+            "EFECTIVO",
+            "TRANSFERENCIA",
+            "MERCADO PAGO",
+            "TARJETA DE CREDITO",
+            "TARJETA DE DEBITO"});
+            this.CboFormadePago.Location = new System.Drawing.Point(80, 44);
+            this.CboFormadePago.Name = "CboFormadePago";
+            this.CboFormadePago.Size = new System.Drawing.Size(170, 21);
+            this.CboFormadePago.TabIndex = 2;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(542, 27);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(35, 13);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "Cuota";
+            this.label16.Click += new System.EventHandler(this.label16_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(77, 27);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(79, 13);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "Forma de Pago";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.PanelArticulos);
@@ -679,62 +741,25 @@
             // 
             this.ErrorIcono.ContainerControl = this;
             // 
-            // groupBox3
+            // label17
             // 
-            this.groupBox3.Controls.Add(this.CboCuota);
-            this.groupBox3.Controls.Add(this.CboFormadePago);
-            this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Location = new System.Drawing.Point(17, 171);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1145, 100);
-            this.groupBox3.TabIndex = 10;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Medio de Pago";
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(325, 27);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(46, 13);
+            this.label17.TabIndex = 4;
+            this.label17.Text = "Moneda";
             // 
-            // label15
+            // CboMoneda
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(77, 27);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(79, 13);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "Forma de Pago";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(413, 27);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(35, 13);
-            this.label16.TabIndex = 1;
-            this.label16.Text = "Cuota";
-            // 
-            // CboFormadePago
-            // 
-            this.CboFormadePago.FormattingEnabled = true;
-            this.CboFormadePago.Items.AddRange(new object[] {
-            "EFECTIVO",
-            "TRANSFERENCIA",
-            "MERCADO PAGO",
-            "TARJETA DE CREDITO",
-            "TARJETA DE DEBITO"});
-            this.CboFormadePago.Location = new System.Drawing.Point(80, 44);
-            this.CboFormadePago.Name = "CboFormadePago";
-            this.CboFormadePago.Size = new System.Drawing.Size(170, 21);
-            this.CboFormadePago.TabIndex = 2;
-            // 
-            // CboCuota
-            // 
-            this.CboCuota.FormattingEnabled = true;
-            this.CboCuota.Items.AddRange(new object[] {
-            "1 CUOTA",
-            "2 CUOTAS",
-            "3 CUOTAS"});
-            this.CboCuota.Location = new System.Drawing.Point(416, 44);
-            this.CboCuota.Name = "CboCuota";
-            this.CboCuota.Size = new System.Drawing.Size(97, 21);
-            this.CboCuota.TabIndex = 3;
+            this.CboMoneda.FormattingEnabled = true;
+            this.CboMoneda.Items.AddRange(new object[] {
+            "PESOS",
+            "DOLARES"});
+            this.CboMoneda.Location = new System.Drawing.Point(328, 45);
+            this.CboMoneda.Name = "CboMoneda";
+            this.CboMoneda.Size = new System.Drawing.Size(121, 21);
+            this.CboMoneda.TabIndex = 5;
             // 
             // FrmVenta
             // 
@@ -756,6 +781,8 @@
             this.tabPage1.PerformLayout();
             this.TabGeneral.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.PanelArticulos.ResumeLayout(false);
@@ -763,8 +790,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DgvArticulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -832,5 +857,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox CboCuota;
         private System.Windows.Forms.ComboBox CboFormadePago;
+        private System.Windows.Forms.ComboBox CboMoneda;
+        private System.Windows.Forms.Label label17;
     }
 }

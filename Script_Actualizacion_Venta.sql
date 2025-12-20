@@ -98,3 +98,4 @@ GO
 
 PRINT 'Actualización completada exitosamente. Los campos forma_pago y cuota han sido agregados a la tabla venta y los stored procedures han sido actualizados.';
 
+

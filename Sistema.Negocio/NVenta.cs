@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using Sistema.Datos;
 using Sistema.Entidades;
@@ -27,7 +27,7 @@ namespace Sistema.Negocio
             DVenta Datos = new DVenta();
             return Datos.ListarDetalle(Id);
         }
-        public static string Insertar(int IdCliente,int IdUsuario,string TipoComprobante,string SerioComprobante,string NumComprobante, decimal Impuesto, decimal Total,DataTable Detalles)
+        public static string Insertar(int IdCliente, int IdUsuario, string TipoComprobante, string SerioComprobante, string NumComprobante, decimal Impuesto, decimal Total, string FormaPago, string Cuota, DataTable Detalles)
         {
             DVenta Datos = new DVenta();
             Venta Obj = new Venta();
@@ -38,6 +38,8 @@ namespace Sistema.Negocio
             Obj.NumComprobante = NumComprobante;
             Obj.Impuesto = Impuesto;
             Obj.Total = Total;
+            Obj.FormaPago = FormaPago;
+            Obj.Cuota = Cuota;
             Obj.Detalles = Detalles;
             return Datos.Insertar(Obj);
         }

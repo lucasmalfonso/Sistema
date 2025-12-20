@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Windows.Forms;
 using Sistema.Negocio;
@@ -57,6 +57,10 @@ namespace Sistema.Presentacion
             DgvListado.Columns[9].Width = 100;
             DgvListado.Columns[10].Width = 100;
             DgvListado.Columns[11].Width = 100;
+            DgvListado.Columns[12].Width = 120;
+            DgvListado.Columns[12].HeaderText = "Forma de Pago";
+            DgvListado.Columns[13].Width = 100;
+            DgvListado.Columns[13].HeaderText = "Cuota";
         }
         private void Limpiar()
         {
@@ -66,6 +70,8 @@ namespace Sistema.Presentacion
             TxtNombreCliente.Clear();
             TxtSerieComprobante.Clear();
             TxtNumComprobate.Clear();
+            CboFormadePago.SelectedIndex = -1;
+            CboCuota.SelectedIndex = -1;
             DtDetalle.Clear();
             TxtSubTotal.Text = "0.00";
             TxtTotalImpuesto.Text = "0.00";
@@ -278,7 +284,9 @@ namespace Sistema.Presentacion
                 }
                 else
                 {
-                    Rpta = NVenta.Insertar(Convert.ToInt32(TxtIdCliente.Text), Variables.IdUsuario, CboComprobante.Text, TxtSerieComprobante.Text.Trim(), TxtNumComprobate.Text.Trim(), Convert.ToDecimal(TxtImpuesto.Text), Convert.ToDecimal(TxtTotal.Text), DtDetalle);
+                    string formaPago = !string.IsNullOrWhiteSpace(CboFormadePago.Text) ? CboFormadePago.Text.Trim() : "";
+                    string cuota = !string.IsNullOrWhiteSpace(CboCuota.Text) ? CboCuota.Text.Trim() : "";
+                    Rpta = NVenta.Insertar(Convert.ToInt32(TxtIdCliente.Text), Variables.IdUsuario, CboComprobante.Text, TxtSerieComprobante.Text.Trim(), TxtNumComprobate.Text.Trim(), Convert.ToDecimal(TxtImpuesto.Text), Convert.ToDecimal(TxtTotal.Text), formaPago, cuota, DtDetalle);
                     if (Rpta.Equals("OK"))
                     {
                         this.MensajeOk("Se insertó de forma correcta el registro");
@@ -403,6 +411,11 @@ namespace Sistema.Presentacion
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

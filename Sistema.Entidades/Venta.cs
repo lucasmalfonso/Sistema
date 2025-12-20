@@ -15,6 +15,8 @@ namespace Sistema.Entidades
         public decimal Impuesto { get; set; }
         public decimal Total {  get; set; }
         public string Estado { get; set; }
+        public string FormaPago { get; set; }
+        public string Cuota { get; set; }
         public DataTable Detalles { get; set; }
     }
 }

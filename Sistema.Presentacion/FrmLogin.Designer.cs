@@ -44,29 +44,29 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(39, 87);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Email";
+            this.label1.Text = "Usuario";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(39, 142);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 13);
+            this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Clave";
+            this.label2.Text = "Contraseña";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Turquoise;
+            this.label3.BackColor = System.Drawing.Color.SkyBlue;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(139, 9);
+            this.label3.Location = new System.Drawing.Point(169, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(254, 31);
+            this.label3.Size = new System.Drawing.Size(187, 31);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Acceso al Sistema";
+            this.label3.Text = "Iniciar sesión";
             // 
             // TxtEmail
             // 
@@ -85,10 +85,10 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Turquoise;
-            this.pictureBox1.Location = new System.Drawing.Point(0, -1);
+            this.pictureBox1.BackColor = System.Drawing.Color.SkyBlue;
+            this.pictureBox1.Location = new System.Drawing.Point(2, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(490, 60);
+            this.pictureBox1.Size = new System.Drawing.Size(486, 53);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
@@ -98,7 +98,7 @@
             this.BtnAcceder.Name = "BtnAcceder";
             this.BtnAcceder.Size = new System.Drawing.Size(149, 23);
             this.BtnAcceder.TabIndex = 6;
-            this.BtnAcceder.Text = "Acceder";
+            this.BtnAcceder.Text = "Ingresar";
             this.BtnAcceder.UseVisualStyleBackColor = true;
             this.BtnAcceder.Click += new System.EventHandler(this.BtnAcceder_Click);
             // 
