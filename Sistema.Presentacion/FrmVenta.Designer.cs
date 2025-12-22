@@ -67,6 +67,8 @@
             this.TabGeneral = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.CboMoneda = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.CboCuota = new System.Windows.Forms.ComboBox();
             this.CboFormadePago = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -90,8 +92,6 @@
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnInsertar = new System.Windows.Forms.Button();
             this.ErrorIcono = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label17 = new System.Windows.Forms.Label();
-            this.CboMoneda = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.PanelMostrar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMostrarDetalle)).BeginInit();
@@ -421,7 +421,7 @@
             this.DgvListado.Name = "DgvListado";
             this.DgvListado.ReadOnly = true;
             this.DgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvListado.Size = new System.Drawing.Size(1141, 395);
+            this.DgvListado.Size = new System.Drawing.Size(1290, 395);
             this.DgvListado.TabIndex = 0;
             this.DgvListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellContentClick);
             this.DgvListado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellDoubleClick);
@@ -439,7 +439,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1215, 796);
+            this.tabPage1.Size = new System.Drawing.Size(1322, 796);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -469,7 +469,7 @@
             this.TabGeneral.Location = new System.Drawing.Point(17, 12);
             this.TabGeneral.Name = "TabGeneral";
             this.TabGeneral.SelectedIndex = 0;
-            this.TabGeneral.Size = new System.Drawing.Size(1223, 822);
+            this.TabGeneral.Size = new System.Drawing.Size(1330, 822);
             this.TabGeneral.TabIndex = 2;
             // 
             // tabPage2
@@ -501,6 +501,26 @@
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Medio de Pago";
+            // 
+            // CboMoneda
+            // 
+            this.CboMoneda.FormattingEnabled = true;
+            this.CboMoneda.Items.AddRange(new object[] {
+            "PESOS",
+            "DOLARES"});
+            this.CboMoneda.Location = new System.Drawing.Point(328, 45);
+            this.CboMoneda.Name = "CboMoneda";
+            this.CboMoneda.Size = new System.Drawing.Size(121, 21);
+            this.CboMoneda.TabIndex = 5;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(325, 27);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(46, 13);
+            this.label17.TabIndex = 4;
+            this.label17.Text = "Moneda";
             // 
             // CboCuota
             // 
@@ -741,32 +761,12 @@
             // 
             this.ErrorIcono.ContainerControl = this;
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(325, 27);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(46, 13);
-            this.label17.TabIndex = 4;
-            this.label17.Text = "Moneda";
-            // 
-            // CboMoneda
-            // 
-            this.CboMoneda.FormattingEnabled = true;
-            this.CboMoneda.Items.AddRange(new object[] {
-            "PESOS",
-            "DOLARES"});
-            this.CboMoneda.Location = new System.Drawing.Point(328, 45);
-            this.CboMoneda.Name = "CboMoneda";
-            this.CboMoneda.Size = new System.Drawing.Size(121, 21);
-            this.CboMoneda.TabIndex = 5;
-            // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1252, 846);
+            this.ClientSize = new System.Drawing.Size(1359, 846);
             this.Controls.Add(this.TabGeneral);
             this.Name = "FrmVenta";
             this.Text = "Ventas";

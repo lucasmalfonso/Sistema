@@ -8,13 +8,14 @@
     @total decimal(11,2),
     @forma_pago varchar(50),
     @cuota varchar(20),
+    @moneda varchar(20),
     @detalle type_detalle_venta READONLY
 AS
 BEGIN
     INSERT INTO venta (idusuario,idcliente,tipo_comprobante,serie_comprobante,
-    num_comprobante,fecha,impuesto,total,estado,forma_pago,cuota)
+    num_comprobante,fecha,impuesto,total,estado,forma_pago,cuota,moneda)
     VALUES (@idusuario,@idcliente,@tipo_comprobante,@serie_comprobante,
-    @num_comprobante,GETDATE(),@impuesto,@total,'Aceptado',@forma_pago,@cuota);
+    @num_comprobante,GETDATE(),@impuesto,@total,'Aceptado',@forma_pago,@cuota,@moneda);
     
     INSERT detalle_venta (idventa,idarticulo,cantidad,precio,descuento)
     SELECT @@IDENTITY,d.idarticulo,d.cantidad,d.precio,d.descuento

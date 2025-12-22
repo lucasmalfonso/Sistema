@@ -56,7 +56,7 @@ namespace Sistema.Datos
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
         }
-        public DataTable ConsultaFechas(DateTime FechaInicio, DateTime FechaFin)
+        public DataTable ConsultaFechas(DateTime FechaInicio, DateTime FechaFin, string FormaPago, string Moneda)
         {
             SqlDataReader Resultado;
             DataTable Tabla = new DataTable();
@@ -68,6 +68,15 @@ namespace Sistema.Datos
                 Comando.CommandType = CommandType.StoredProcedure;
                 Comando.Parameters.Add("@fecha_inicio", SqlDbType.Date).Value = FechaInicio;
                 Comando.Parameters.Add("@fecha_fin", SqlDbType.Date).Value = FechaFin;
+                
+                SqlParameter paramFormaPago = new SqlParameter("@forma_pago", SqlDbType.VarChar, 50);
+                paramFormaPago.Value = string.IsNullOrWhiteSpace(FormaPago) || FormaPago == "TODAS" ? (object)DBNull.Value : FormaPago;
+                Comando.Parameters.Add(paramFormaPago);
+                
+                SqlParameter paramMoneda = new SqlParameter("@moneda", SqlDbType.VarChar, 20);
+                paramMoneda.Value = string.IsNullOrWhiteSpace(Moneda) || Moneda == "TODAS" ? (object)DBNull.Value : Moneda;
+                Comando.Parameters.Add(paramMoneda);
+                
                 SqlCon.Open();
                 Resultado = Comando.ExecuteReader();
                 Tabla.Load(Resultado);
@@ -131,6 +140,11 @@ namespace Sistema.Datos
                 SqlParameter paramCuota = new SqlParameter("@cuota", SqlDbType.VarChar, 20);
                 paramCuota.Value = string.IsNullOrWhiteSpace(Obj.Cuota) ? (object)DBNull.Value : Obj.Cuota;
                 Comando.Parameters.Add(paramCuota);
+                
+                SqlParameter paramMoneda = new SqlParameter("@moneda", SqlDbType.VarChar, 20);
+                paramMoneda.Value = string.IsNullOrWhiteSpace(Obj.Moneda) ? (object)DBNull.Value : Obj.Moneda;
+                Comando.Parameters.Add(paramMoneda);
+                
                 Comando.Parameters.Add("@detalle", SqlDbType.Structured).Value = Obj.Detalles;
                 SqlCon.Open();
                 Comando.ExecuteNonQuery();

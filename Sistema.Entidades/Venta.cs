@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 
 namespace Sistema.Entidades
@@ -17,6 +17,7 @@ namespace Sistema.Entidades
         public string Estado { get; set; }
         public string FormaPago { get; set; }
         public string Cuota { get; set; }
+        public string Moneda { get; set; }
         public DataTable Detalles { get; set; }
     }
 }

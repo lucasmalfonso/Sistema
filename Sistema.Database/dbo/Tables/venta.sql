@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[venta] (
+CREATE TABLE [dbo].[venta] (
     [idventa]           INT             IDENTITY (1, 1) NOT NULL,
     [idcliente]         INT             NOT NULL,
     [idusuario]         INT             NOT NULL,
@@ -11,6 +11,7 @@
     [estado]            VARCHAR (20)    NOT NULL,
     [forma_pago]        VARCHAR (50)    NULL,
     [cuota]             VARCHAR (20)    NULL,
+    [moneda]            VARCHAR (20)    NULL,
     PRIMARY KEY CLUSTERED ([idventa] ASC),
     FOREIGN KEY ([idcliente]) REFERENCES [dbo].[persona] ([idpersona]),
     FOREIGN KEY ([idusuario]) REFERENCES [dbo].[usuario] ([idusuario])

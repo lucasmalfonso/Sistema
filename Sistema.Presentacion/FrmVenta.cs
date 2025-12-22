@@ -41,27 +41,53 @@ namespace Sistema.Presentacion
         }
         private void Formato()
         {
-            DgvListado.Columns[0].Visible = false;
-            DgvListado.Columns[1].Visible = false;
-            DgvListado.Columns[2].Visible = false;
-            DgvListado.Columns[0].Width = 100;
-            DgvListado.Columns[3].Width = 150;
-            DgvListado.Columns[4].Width = 150;
-            DgvListado.Columns[5].Width = 100;
-            DgvListado.Columns[5].HeaderText = "Documento";
-            DgvListado.Columns[6].Width = 70;
-            DgvListado.Columns[6].HeaderText = "Serie";
-            DgvListado.Columns[7].Width = 80;
-            DgvListado.Columns[7].HeaderText = "Número";
-            DgvListado.Columns[8].Width = 60;
-            DgvListado.Columns[9].Width = 100;
-            DgvListado.Columns[10].Width = 100;
-            DgvListado.Columns[11].Width = 100;
-            DgvListado.Columns[12].Width = 120;
-            DgvListado.Columns[12].HeaderText = "Forma de Pago";
-            DgvListado.Columns[13].Width = 100;
-            DgvListado.Columns[13].HeaderText = "Cuota";
+            // Ocultar columnas internas
+            DgvListado.Columns["ID"].Visible = false;
+            DgvListado.Columns["idusuario"].Visible = false;
+
+            // Usuario
+            DgvListado.Columns["Usuario"].Width = 120;
+
+            // Cliente
+            DgvListado.Columns["Cliente"].Width = 150;
+
+            // Tipo comprobante
+            DgvListado.Columns["Tipo_Comprobante"].Width = 110;
+            DgvListado.Columns["Tipo_Comprobante"].HeaderText = "Comprobante";
+
+            // Serie
+            DgvListado.Columns["Serie"].Width = 60;
+
+            // Número
+            DgvListado.Columns["Numero"].Width = 70;
+            DgvListado.Columns["Numero"].HeaderText = "Número";
+
+            // Fecha
+            DgvListado.Columns["Fecha"].Width = 90;
+            DgvListado.Columns["Fecha"].DefaultCellStyle.Format = "dd/MM/yyyy";
+
+            // Impuesto
+            DgvListado.Columns["Impuesto"].Width = 70;
+
+            // Forma de pago
+            DgvListado.Columns["Forma_Pago"].Width = 120;
+            DgvListado.Columns["Forma_Pago"].HeaderText = "Forma de Pago";
+
+            // Cuota
+            DgvListado.Columns["Cuota"].Width = 80;
+
+            // Moneda
+            DgvListado.Columns["Moneda"].Width = 80;
+
+            // Total
+            DgvListado.Columns["Total"].Width = 100;
+            DgvListado.Columns["Total"].DefaultCellStyle.Format = "N2";
+
+            // Estado
+            DgvListado.Columns["Estado"].Width = 90;
+
         }
+
         private void Limpiar()
         {
             TxtBuscar.Clear();
@@ -72,6 +98,7 @@ namespace Sistema.Presentacion
             TxtNumComprobate.Clear();
             CboFormadePago.SelectedIndex = -1;
             CboCuota.SelectedIndex = -1;
+            CboMoneda.SelectedIndex = -1;
             DtDetalle.Clear();
             TxtSubTotal.Text = "0.00";
             TxtTotalImpuesto.Text = "0.00";
@@ -286,7 +313,8 @@ namespace Sistema.Presentacion
                 {
                     string formaPago = !string.IsNullOrWhiteSpace(CboFormadePago.Text) ? CboFormadePago.Text.Trim() : "";
                     string cuota = !string.IsNullOrWhiteSpace(CboCuota.Text) ? CboCuota.Text.Trim() : "";
-                    Rpta = NVenta.Insertar(Convert.ToInt32(TxtIdCliente.Text), Variables.IdUsuario, CboComprobante.Text, TxtSerieComprobante.Text.Trim(), TxtNumComprobate.Text.Trim(), Convert.ToDecimal(TxtImpuesto.Text), Convert.ToDecimal(TxtTotal.Text), formaPago, cuota, DtDetalle);
+                    string moneda = !string.IsNullOrWhiteSpace(CboMoneda.Text) ? CboMoneda.Text.Trim() : "";
+                    Rpta = NVenta.Insertar(Convert.ToInt32(TxtIdCliente.Text), Variables.IdUsuario, CboComprobante.Text, TxtSerieComprobante.Text.Trim(), TxtNumComprobate.Text.Trim(), Convert.ToDecimal(TxtImpuesto.Text), Convert.ToDecimal(TxtTotal.Text), formaPago, cuota, moneda, DtDetalle);
                     if (Rpta.Equals("OK"))
                     {
                         this.MensajeOk("Se insertó de forma correcta el registro");

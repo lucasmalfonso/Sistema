@@ -21,10 +21,38 @@ namespace Sistema.Presentacion
         {
             try
             {
-                DgvListado.DataSource = NVenta.ConsultaFechas(Convert.ToDateTime(DtpFechaInicio.Value),Convert.ToDateTime(DtpFechaFin.Value));
+                string formaPago = CboFormaPagoConsulta.SelectedIndex >= 0 ? CboFormaPagoConsulta.Text : "TODAS";
+                string moneda = CboMonedaConsulta.SelectedIndex >= 0 ? CboMonedaConsulta.Text : "TODAS";
+                
+                DgvListado.DataSource = NVenta.ConsultaFechas(Convert.ToDateTime(DtpFechaInicio.Value), Convert.ToDateTime(DtpFechaFin.Value), formaPago, moneda);
                 this.Formato();
                 this.Limpiar();
                 LblTotal.Text = "Total Registros: " + Convert.ToString(DgvListado.Rows.Count);
+                
+                // Calcular totales en Pesos y Dólares
+                decimal totalPesos = 0;
+                decimal totalDolares = 0;
+                
+                foreach (DataGridViewRow row in DgvListado.Rows)
+                {
+                    if (row.Cells["Total"].Value != null && row.Cells["Moneda"].Value != null)
+                    {
+                        decimal total = Convert.ToDecimal(row.Cells["Total"].Value);
+                        string monedaVenta = row.Cells["Moneda"].Value.ToString();
+                        
+                        if (monedaVenta == "PESOS")
+                        {
+                            totalPesos += total;
+                        }
+                        else if (monedaVenta == "DOLARES")
+                        {
+                            totalDolares += total;
+                        }
+                    }
+                }
+                
+                LblPesos.Text = "Pesos: $" + totalPesos.ToString("N2");
+                LblDolares.Text = "Dolares: $" + totalDolares.ToString("N2");
             }
             catch (Exception ex)
             {
@@ -33,22 +61,51 @@ namespace Sistema.Presentacion
         }
         private void Formato()
         {
-            DgvListado.Columns[0].Visible = false;
-            DgvListado.Columns[1].Visible = false;
-            DgvListado.Columns[2].Visible = false;
-            DgvListado.Columns[0].Width = 100;
-            DgvListado.Columns[3].Width = 150;
-            DgvListado.Columns[4].Width = 150;
-            DgvListado.Columns[5].Width = 100;
-            DgvListado.Columns[5].HeaderText = "Documento";
-            DgvListado.Columns[6].Width = 70;
-            DgvListado.Columns[6].HeaderText = "Serie";
-            DgvListado.Columns[7].Width = 80;
-            DgvListado.Columns[7].HeaderText = "Número";
-            DgvListado.Columns[8].Width = 60;
-            DgvListado.Columns[9].Width = 100;
-            DgvListado.Columns[10].Width = 100;
-            DgvListado.Columns[11].Width = 100;
+            // Ocultar columnas internas
+            DgvListado.Columns["ID"].Visible = false;
+            DgvListado.Columns["idusuario"].Visible = false;
+
+            // Usuario
+            DgvListado.Columns["Usuario"].Width = 120;
+
+            // Cliente
+            DgvListado.Columns["Cliente"].Width = 150;
+
+            // Tipo comprobante
+            DgvListado.Columns["Tipo_Comprobante"].Width = 110;
+            DgvListado.Columns["Tipo_Comprobante"].HeaderText = "Comprobante";
+
+            // Serie
+            DgvListado.Columns["Serie"].Width = 60;
+
+            // Número
+            DgvListado.Columns["Numero"].Width = 70;
+            DgvListado.Columns["Numero"].HeaderText = "Número";
+
+            // Fecha
+            DgvListado.Columns["Fecha"].Width = 90;
+            DgvListado.Columns["Fecha"].DefaultCellStyle.Format = "dd/MM/yyyy";
+
+            // Impuesto
+            DgvListado.Columns["Impuesto"].Width = 70;
+
+            // Forma de pago
+            DgvListado.Columns["Forma_Pago"].Width = 120;
+            DgvListado.Columns["Forma_Pago"].HeaderText = "Forma de Pago";
+
+            // Cuota
+            DgvListado.Columns["Cuota"].Width = 80;
+
+            // Moneda
+            DgvListado.Columns["Moneda"].Width = 80;
+
+            // Total
+            DgvListado.Columns["Total"].Width = 100;
+            DgvListado.Columns["Total"].DefaultCellStyle.Format = "N2";
+
+            // Estado
+            DgvListado.Columns["Estado"].Width = 90;
+
         }
         private void Limpiar()
         {
@@ -64,7 +121,9 @@ namespace Sistema.Presentacion
         }
         private void FrmConsulta_VentaFechas_Load(object sender, EventArgs e)
         {
-
+            // Inicializar ComboBox con "TODAS" seleccionado
+            CboFormaPagoConsulta.SelectedIndex = 0;
+            CboMonedaConsulta.SelectedIndex = 0;
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
@@ -109,6 +168,11 @@ namespace Sistema.Presentacion
         private void BtnCerrarDetalle_Click(object sender, EventArgs e)
         {
             PanelMostrar.Visible=false;
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

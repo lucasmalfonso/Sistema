@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.DgvMostrarDetalle = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.DtpFechaFin = new System.Windows.Forms.DateTimePicker();
+            this.DtpFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.BtnComprobante = new System.Windows.Forms.Button();
             this.PanelMostrar = new System.Windows.Forms.Panel();
             this.TxtTotalD = new System.Windows.Forms.TextBox();
@@ -46,10 +50,12 @@
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TabGeneral = new System.Windows.Forms.TabControl();
             this.ErrorIcono = new System.Windows.Forms.ErrorProvider(this.components);
-            this.DtpFechaInicio = new System.Windows.Forms.DateTimePicker();
-            this.DtpFechaFin = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.CboFormaPagoConsulta = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.CboMonedaConsulta = new System.Windows.Forms.ComboBox();
+            this.LblPesos = new System.Windows.Forms.Label();
+            this.LblDolares = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMostrarDetalle)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.PanelMostrar.SuspendLayout();
@@ -72,6 +78,12 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.LblDolares);
+            this.tabPage1.Controls.Add(this.LblPesos);
+            this.tabPage1.Controls.Add(this.CboMonedaConsulta);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.CboFormaPagoConsulta);
+            this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.DtpFechaFin);
@@ -84,14 +96,49 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1175, 633);
+            this.tabPage1.Size = new System.Drawing.Size(1342, 633);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(221, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Hasta";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(60, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Desde";
+            // 
+            // DtpFechaFin
+            // 
+            this.DtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DtpFechaFin.Location = new System.Drawing.Point(262, 11);
+            this.DtpFechaFin.Name = "DtpFechaFin";
+            this.DtpFechaFin.Size = new System.Drawing.Size(98, 20);
+            this.DtpFechaFin.TabIndex = 10;
+            // 
+            // DtpFechaInicio
+            // 
+            this.DtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DtpFechaInicio.Location = new System.Drawing.Point(104, 11);
+            this.DtpFechaInicio.Name = "DtpFechaInicio";
+            this.DtpFechaInicio.Size = new System.Drawing.Size(101, 20);
+            this.DtpFechaInicio.TabIndex = 9;
             // 
             // BtnComprobante
             // 
-            this.BtnComprobante.Location = new System.Drawing.Point(1014, 12);
+            this.BtnComprobante.Location = new System.Drawing.Point(1019, 8);
             this.BtnComprobante.Name = "BtnComprobante";
             this.BtnComprobante.Size = new System.Drawing.Size(117, 23);
             this.BtnComprobante.TabIndex = 8;
@@ -110,7 +157,7 @@
             this.PanelMostrar.Controls.Add(this.label12);
             this.PanelMostrar.Controls.Add(this.BtnCerrarDetalle);
             this.PanelMostrar.Controls.Add(this.DgvMostrarDetalle);
-            this.PanelMostrar.Location = new System.Drawing.Point(211, 194);
+            this.PanelMostrar.Location = new System.Drawing.Point(200, 41);
             this.PanelMostrar.Name = "PanelMostrar";
             this.PanelMostrar.Size = new System.Drawing.Size(936, 404);
             this.PanelMostrar.TabIndex = 7;
@@ -182,7 +229,7 @@
             // BtnBuscar
             // 
             this.BtnBuscar.BackColor = System.Drawing.Color.LightGray;
-            this.BtnBuscar.Location = new System.Drawing.Point(803, 12);
+            this.BtnBuscar.Location = new System.Drawing.Point(823, 7);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(190, 23);
             this.BtnBuscar.TabIndex = 3;
@@ -207,11 +254,11 @@
             this.DgvListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar});
-            this.DgvListado.Location = new System.Drawing.Point(16, 45);
+            this.DgvListado.Location = new System.Drawing.Point(16, 41);
             this.DgvListado.Name = "DgvListado";
             this.DgvListado.ReadOnly = true;
             this.DgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvListado.Size = new System.Drawing.Size(1141, 395);
+            this.DgvListado.Size = new System.Drawing.Size(1310, 399);
             this.DgvListado.TabIndex = 0;
             this.DgvListado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellDoubleClick);
             // 
@@ -227,53 +274,82 @@
             this.TabGeneral.Location = new System.Drawing.Point(12, 12);
             this.TabGeneral.Name = "TabGeneral";
             this.TabGeneral.SelectedIndex = 0;
-            this.TabGeneral.Size = new System.Drawing.Size(1183, 659);
+            this.TabGeneral.Size = new System.Drawing.Size(1350, 659);
             this.TabGeneral.TabIndex = 3;
             // 
             // ErrorIcono
             // 
             this.ErrorIcono.ContainerControl = this;
             // 
-            // DtpFechaInicio
+            // label3
             // 
-            this.DtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtpFechaInicio.Location = new System.Drawing.Point(147, 11);
-            this.DtpFechaInicio.Name = "DtpFechaInicio";
-            this.DtpFechaInicio.Size = new System.Drawing.Size(200, 20);
-            this.DtpFechaInicio.TabIndex = 9;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(381, 12);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Forma de Pago";
             // 
-            // DtpFechaFin
+            // CboFormaPagoConsulta
             // 
-            this.DtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtpFechaFin.Location = new System.Drawing.Point(493, 12);
-            this.DtpFechaFin.Name = "DtpFechaFin";
-            this.DtpFechaFin.Size = new System.Drawing.Size(200, 20);
-            this.DtpFechaFin.TabIndex = 10;
+            this.CboFormaPagoConsulta.FormattingEnabled = true;
+            this.CboFormaPagoConsulta.Items.AddRange(new object[] {
+            "TODAS",
+            "EFECTIVO",
+            "TRANSFERENCIA",
+            "MERCADO PAGO",
+            "TARJETA DE CREDITO",
+            "TARJETA DE DEBITO"});
+            this.CboFormaPagoConsulta.Location = new System.Drawing.Point(467, 9);
+            this.CboFormaPagoConsulta.Name = "CboFormaPagoConsulta";
+            this.CboFormaPagoConsulta.Size = new System.Drawing.Size(121, 21);
+            this.CboFormaPagoConsulta.TabIndex = 14;
             // 
-            // label1
+            // label4
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(60, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Desde";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(605, 12);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Moneda";
             // 
-            // label2
+            // CboMonedaConsulta
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(398, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Hasta";
+            this.CboMonedaConsulta.FormattingEnabled = true;
+            this.CboMonedaConsulta.Items.AddRange(new object[] {
+            "TODAS",
+            "PESOS",
+            "DOLARES"});
+            this.CboMonedaConsulta.Location = new System.Drawing.Point(658, 8);
+            this.CboMonedaConsulta.Name = "CboMonedaConsulta";
+            this.CboMonedaConsulta.Size = new System.Drawing.Size(121, 21);
+            this.CboMonedaConsulta.TabIndex = 16;
+            // 
+            // LblPesos
+            // 
+            this.LblPesos.AutoSize = true;
+            this.LblPesos.Location = new System.Drawing.Point(898, 497);
+            this.LblPesos.Name = "LblPesos";
+            this.LblPesos.Size = new System.Drawing.Size(39, 13);
+            this.LblPesos.TabIndex = 17;
+            this.LblPesos.Text = "Pesos:";
+            // 
+            // LblDolares
+            // 
+            this.LblDolares.AutoSize = true;
+            this.LblDolares.Location = new System.Drawing.Point(898, 531);
+            this.LblDolares.Name = "LblDolares";
+            this.LblDolares.Size = new System.Drawing.Size(46, 13);
+            this.LblDolares.TabIndex = 18;
+            this.LblDolares.Text = "Dolares:";
             // 
             // FrmConsulta_VentaFechas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1203, 676);
+            this.ClientSize = new System.Drawing.Size(1374, 676);
             this.Controls.Add(this.TabGeneral);
             this.Name = "FrmConsulta_VentaFechas";
             this.Text = "Consulta de ventas entre fechas";
@@ -313,5 +389,11 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.TabControl TabGeneral;
         private System.Windows.Forms.ErrorProvider ErrorIcono;
+        private System.Windows.Forms.ComboBox CboMonedaConsulta;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox CboFormaPagoConsulta;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label LblDolares;
+        private System.Windows.Forms.Label LblPesos;
     }
 }
