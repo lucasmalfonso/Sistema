@@ -27,16 +27,12 @@ namespace Sistema.Negocio
             DVenta Datos = new DVenta();
             return Datos.ListarDetalle(Id);
         }
-        public static string Insertar(int IdCliente, int IdUsuario, string TipoComprobante, string SerioComprobante, string NumComprobante, decimal Impuesto, decimal Total, string FormaPago, string Cuota, string Moneda, DataTable Detalles)
+        public static string Insertar(int IdCliente, int IdUsuario, decimal Total, string FormaPago, string Cuota, string Moneda, DataTable Detalles)
         {
             DVenta Datos = new DVenta();
             Venta Obj = new Venta();
             Obj.IdCliente = IdCliente;
             Obj.IdUsuario = IdUsuario;
-            Obj.TipoCompronte = TipoComprobante;
-            Obj.SerieComprobante = SerioComprobante;
-            Obj.NumComprobante = NumComprobante;
-            Obj.Impuesto = Impuesto;
             Obj.Total = Total;
             Obj.FormaPago = FormaPago;
             Obj.Cuota = Cuota;

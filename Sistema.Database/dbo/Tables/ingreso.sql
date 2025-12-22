@@ -2,7 +2,6 @@
     [idingreso]         INT             IDENTITY (1, 1) NOT NULL,
     [idproveedor]       INT             NOT NULL,
     [idusuario]         INT             NOT NULL,
-    [tipo_comprobante]  VARCHAR (20)    NOT NULL,
     [serie_comprobante] VARCHAR (7)     NULL,
     [num_comprobante]   VARCHAR (10)    NOT NULL,
     [fecha]             DATETIME        NOT NULL,

@@ -41,9 +41,11 @@ namespace Sistema.Presentacion
         }
         private void Formato()
         {
-            // Ocultar columnas internas
-            DgvListado.Columns["ID"].Visible = false;
-            DgvListado.Columns["idusuario"].Visible = false;
+            
+            DgvListado.Columns["ID"].Visible = true;
+            DgvListado.Columns["ID"].HeaderText = "Item";
+
+            // Columnas internas ya no se devuelven desde el stored procedure
 
             // Usuario
             DgvListado.Columns["Usuario"].Width = 120;
@@ -51,23 +53,9 @@ namespace Sistema.Presentacion
             // Cliente
             DgvListado.Columns["Cliente"].Width = 150;
 
-            // Tipo comprobante
-            DgvListado.Columns["Tipo_Comprobante"].Width = 110;
-            DgvListado.Columns["Tipo_Comprobante"].HeaderText = "Comprobante";
-
-            // Serie
-            DgvListado.Columns["Serie"].Width = 60;
-
-            // Número
-            DgvListado.Columns["Numero"].Width = 70;
-            DgvListado.Columns["Numero"].HeaderText = "Número";
-
             // Fecha
             DgvListado.Columns["Fecha"].Width = 90;
             DgvListado.Columns["Fecha"].DefaultCellStyle.Format = "dd/MM/yyyy";
-
-            // Impuesto
-            DgvListado.Columns["Impuesto"].Width = 70;
 
             // Forma de pago
             DgvListado.Columns["Forma_Pago"].Width = 120;
@@ -94,14 +82,10 @@ namespace Sistema.Presentacion
             TxtId.Clear();
             TxtIdCliente.Clear();
             TxtNombreCliente.Clear();
-            TxtSerieComprobante.Clear();
-            TxtNumComprobate.Clear();
             CboFormadePago.SelectedIndex = -1;
             CboCuota.SelectedIndex = -1;
             CboMoneda.SelectedIndex = -1;
             DtDetalle.Clear();
-            TxtSubTotal.Text = "0.00";
-            TxtTotalImpuesto.Text = "0.00";
             TxtTotal.Text = "0.00";
 
             DgvListado.Columns[0].Visible = false;
@@ -215,7 +199,6 @@ namespace Sistema.Presentacion
         private void CalcularTotales()
         {
             decimal Total = 0;
-            decimal SubTotal = 0;
             if (DgvDetalle.Rows.Count == 0)
             {
                 Total = 0;
@@ -227,10 +210,7 @@ namespace Sistema.Presentacion
                     Total = Total + Convert.ToDecimal(FilaTemp["importe"]);
                 }
             }
-            SubTotal = Total / (1 + Convert.ToDecimal(TxtImpuesto.Text));
             TxtTotal.Text = Total.ToString("#0.00#");
-            TxtSubTotal.Text = SubTotal.ToString("#0.00#");
-            TxtTotalImpuesto.Text = (Total - SubTotal).ToString("#0.00#");
 
         }
         private void BtnVerArticulos_Click(object sender, EventArgs e)
@@ -301,12 +281,10 @@ namespace Sistema.Presentacion
             try
             {
                 string Rpta = "";
-                if (TxtIdCliente.Text == String.Empty || TxtImpuesto.Text == string.Empty || TxtNumComprobate.Text == string.Empty || DtDetalle.Rows.Count == 0)
+                if (TxtIdCliente.Text == String.Empty || DtDetalle.Rows.Count == 0)
                 {
                     this.MensajeError("Falta ingresar algunos datos, serán remarcados");
                     ErrorIcono.SetError(TxtIdCliente, "Seleccione un cliente");
-                    ErrorIcono.SetError(TxtImpuesto, "Ingrese el impuesto");
-                    ErrorIcono.SetError(TxtNumComprobate, "Ingrese el número de comprobante");
                     ErrorIcono.SetError(DgvDetalle, "Ingrese los detalles del ingreso");
                 }
                 else
@@ -314,7 +292,7 @@ namespace Sistema.Presentacion
                     string formaPago = !string.IsNullOrWhiteSpace(CboFormadePago.Text) ? CboFormadePago.Text.Trim() : "";
                     string cuota = !string.IsNullOrWhiteSpace(CboCuota.Text) ? CboCuota.Text.Trim() : "";
                     string moneda = !string.IsNullOrWhiteSpace(CboMoneda.Text) ? CboMoneda.Text.Trim() : "";
-                    Rpta = NVenta.Insertar(Convert.ToInt32(TxtIdCliente.Text), Variables.IdUsuario, CboComprobante.Text, TxtSerieComprobante.Text.Trim(), TxtNumComprobate.Text.Trim(), Convert.ToDecimal(TxtImpuesto.Text), Convert.ToDecimal(TxtTotal.Text), formaPago, cuota, moneda, DtDetalle);
+                    Rpta = NVenta.Insertar(Convert.ToInt32(TxtIdCliente.Text), Variables.IdUsuario, Convert.ToDecimal(TxtTotal.Text), formaPago, cuota, moneda, DtDetalle);
                     if (Rpta.Equals("OK"))
                     {
                         this.MensajeOk("Se insertó de forma correcta el registro");
@@ -344,12 +322,7 @@ namespace Sistema.Presentacion
             try
             {
                 DgvMostrarDetalle.DataSource = NVenta.ListarDetalle(Convert.ToInt32(DgvListado.CurrentRow.Cells["ID"].Value));
-                decimal Total, SubTotal;
-                decimal Impuesto = Convert.ToDecimal(DgvListado.CurrentRow.Cells["Impuesto"].Value);
-                Total = Convert.ToDecimal(DgvListado.CurrentRow.Cells["Total"].Value);
-                SubTotal = Total / (1 + Impuesto);
-                TxtSubtotalD.Text = SubTotal.ToString("#0.00#");
-                TxtTotalImpuestoD.Text = (Total - SubTotal).ToString("#0.00#");
+                decimal Total = Convert.ToDecimal(DgvListado.CurrentRow.Cells["Total"].Value);
                 TxtTotalD.Text = Total.ToString("#0.00#");
                 PanelMostrar.Visible = true;
             }
@@ -442,6 +415,11 @@ namespace Sistema.Presentacion
         }
 
         private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
         {
 
         }

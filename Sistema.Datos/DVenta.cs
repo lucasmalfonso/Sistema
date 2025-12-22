@@ -128,10 +128,6 @@ namespace Sistema.Datos
                 Comando.CommandType = CommandType.StoredProcedure;
                 Comando.Parameters.Add("@idusuario", SqlDbType.Int).Value = Obj.IdUsuario;
                 Comando.Parameters.Add("@idcliente", SqlDbType.Int).Value = Obj.IdCliente;
-                Comando.Parameters.Add("@tipo_comprobante", SqlDbType.VarChar, 20).Value = Obj.TipoCompronte;
-                Comando.Parameters.Add("@serie_comprobante", SqlDbType.VarChar, 7).Value = Obj.SerieComprobante;
-                Comando.Parameters.Add("@num_comprobante", SqlDbType.VarChar, 10).Value = Obj.NumComprobante;
-                Comando.Parameters.Add("@impuesto", SqlDbType.Decimal).Value = Obj.Impuesto;
                 Comando.Parameters.Add("@total", SqlDbType.Decimal).Value = Obj.Total;
                 SqlParameter paramFormaPago = new SqlParameter("@forma_pago", SqlDbType.VarChar, 50);
                 paramFormaPago.Value = string.IsNullOrWhiteSpace(Obj.FormaPago) ? (object)DBNull.Value : Obj.FormaPago;

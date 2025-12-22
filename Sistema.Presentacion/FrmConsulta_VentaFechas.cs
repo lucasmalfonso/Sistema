@@ -61,9 +61,11 @@ namespace Sistema.Presentacion
         }
         private void Formato()
         {
-            // Ocultar columnas internas
-            DgvListado.Columns["ID"].Visible = false;
-            DgvListado.Columns["idusuario"].Visible = false;
+
+            DgvListado.Columns["ID"].Visible = true;
+            DgvListado.Columns["ID"].HeaderText = "Item";
+
+            // Columnas internas ya no se devuelven desde el stored procedure
 
             // Usuario
             DgvListado.Columns["Usuario"].Width = 120;
@@ -71,23 +73,9 @@ namespace Sistema.Presentacion
             // Cliente
             DgvListado.Columns["Cliente"].Width = 150;
 
-            // Tipo comprobante
-            DgvListado.Columns["Tipo_Comprobante"].Width = 110;
-            DgvListado.Columns["Tipo_Comprobante"].HeaderText = "Comprobante";
-
-            // Serie
-            DgvListado.Columns["Serie"].Width = 60;
-
-            // Número
-            DgvListado.Columns["Numero"].Width = 70;
-            DgvListado.Columns["Numero"].HeaderText = "Número";
-
             // Fecha
             DgvListado.Columns["Fecha"].Width = 90;
             DgvListado.Columns["Fecha"].DefaultCellStyle.Format = "dd/MM/yyyy";
-
-            // Impuesto
-            DgvListado.Columns["Impuesto"].Width = 70;
 
             // Forma de pago
             DgvListado.Columns["Forma_Pago"].Width = 120;
@@ -136,12 +124,7 @@ namespace Sistema.Presentacion
             try
             {
                 DgvMostrarDetalle.DataSource = NVenta.ListarDetalle(Convert.ToInt32(DgvListado.CurrentRow.Cells["ID"].Value));
-                decimal Total, SubTotal;
-                decimal Impuesto = Convert.ToDecimal(DgvListado.CurrentRow.Cells["Impuesto"].Value);
-                Total = Convert.ToDecimal(DgvListado.CurrentRow.Cells["Total"].Value);
-                SubTotal = Total / (1 + Impuesto);
-                TxtSubtotalD.Text = SubTotal.ToString("#0.00#");
-                TxtTotalImpuestoD.Text = (Total - SubTotal).ToString("#0.00#");
+                decimal Total = Convert.ToDecimal(DgvListado.CurrentRow.Cells["Total"].Value);
                 TxtTotalD.Text = Total.ToString("#0.00#");
                 PanelMostrar.Visible = true;
             }

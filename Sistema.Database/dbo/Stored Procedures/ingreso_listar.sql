@@ -1,10 +1,14 @@
-﻿--Procedimiento listar
-create proc ingreso_listar
-as
-select i.idingreso as ID, i.idusuario,u.nombre as Usuario,p.nombre as Proveedor,
-i.tipo_comprobante as Tipo_Comprobante,i.serie_comprobante as Serie,
-i.num_comprobante as Numero,i.fecha as Fecha,i.impuesto as Impuesto,
-i.total as Total,i.estado as Estado
-from ingreso i inner join usuario u on i.idusuario=u.idusuario
-inner join persona p on i.idproveedor=p.idpersona
-order by i.idingreso desc
+﻿CREATE PROC dbo.ingreso_listar
+AS
+BEGIN
+    SELECT i.idingreso AS ID,i.idproveedor,i.idusuario,
+    p.nombre AS Proveedor,u.nombre AS Usuario,
+    i.serie_comprobante AS Serie,
+    i.num_comprobante AS Numero,i.fecha AS Fecha,
+    i.impuesto AS Impuesto,i.total AS Total,
+    i.estado AS Estado
+    FROM ingreso i
+    INNER JOIN persona p ON i.idproveedor=p.idpersona
+    INNER JOIN usuario u ON i.idusuario=u.idusuario
+    ORDER BY i.idingreso DESC;
+END;

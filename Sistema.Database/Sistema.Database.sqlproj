@@ -115,7 +115,6 @@
     <Build Include="dbo\Stored Procedures\articulo_buscar_nombre_venta.sql" />
     <Build Include="dbo\Stored Procedures\articulo_buscar_venta.sql" />
     <Build Include="dbo\Stored Procedures\venta_listar_detalle.sql" />
-    <Build Include="dbo\Stored Procedures\venta_comprobante.sql" />
     <Build Include="dbo\Stored Procedures\venta_consulta_fechas.sql" />
     <Build Include="dbo\Stored Procedures\categoria_listar.sql" />
     <Build Include="dbo\Stored Procedures\categoria_buscar.sql" />

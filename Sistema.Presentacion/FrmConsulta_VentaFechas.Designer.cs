@@ -31,6 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.DgvMostrarDetalle = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.LblDolares = new System.Windows.Forms.Label();
+            this.LblPesos = new System.Windows.Forms.Label();
+            this.CboMonedaConsulta = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.CboFormaPagoConsulta = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.DtpFechaFin = new System.Windows.Forms.DateTimePicker();
@@ -38,11 +44,7 @@
             this.BtnComprobante = new System.Windows.Forms.Button();
             this.PanelMostrar = new System.Windows.Forms.Panel();
             this.TxtTotalD = new System.Windows.Forms.TextBox();
-            this.TxtTotalImpuestoD = new System.Windows.Forms.TextBox();
-            this.TxtSubtotalD = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.BtnCerrarDetalle = new System.Windows.Forms.Button();
             this.BtnBuscar = new System.Windows.Forms.Button();
             this.LblTotal = new System.Windows.Forms.Label();
@@ -50,12 +52,6 @@
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TabGeneral = new System.Windows.Forms.TabControl();
             this.ErrorIcono = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label3 = new System.Windows.Forms.Label();
-            this.CboFormaPagoConsulta = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.CboMonedaConsulta = new System.Windows.Forms.ComboBox();
-            this.LblPesos = new System.Windows.Forms.Label();
-            this.LblDolares = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMostrarDetalle)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.PanelMostrar.SuspendLayout();
@@ -101,6 +97,69 @@
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // LblDolares
+            // 
+            this.LblDolares.AutoSize = true;
+            this.LblDolares.Location = new System.Drawing.Point(898, 531);
+            this.LblDolares.Name = "LblDolares";
+            this.LblDolares.Size = new System.Drawing.Size(46, 13);
+            this.LblDolares.TabIndex = 18;
+            this.LblDolares.Text = "Dolares:";
+            // 
+            // LblPesos
+            // 
+            this.LblPesos.AutoSize = true;
+            this.LblPesos.Location = new System.Drawing.Point(898, 497);
+            this.LblPesos.Name = "LblPesos";
+            this.LblPesos.Size = new System.Drawing.Size(39, 13);
+            this.LblPesos.TabIndex = 17;
+            this.LblPesos.Text = "Pesos:";
+            // 
+            // CboMonedaConsulta
+            // 
+            this.CboMonedaConsulta.FormattingEnabled = true;
+            this.CboMonedaConsulta.Items.AddRange(new object[] {
+            "TODAS",
+            "PESOS",
+            "DOLARES"});
+            this.CboMonedaConsulta.Location = new System.Drawing.Point(658, 8);
+            this.CboMonedaConsulta.Name = "CboMonedaConsulta";
+            this.CboMonedaConsulta.Size = new System.Drawing.Size(121, 21);
+            this.CboMonedaConsulta.TabIndex = 16;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(605, 12);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Moneda";
+            // 
+            // CboFormaPagoConsulta
+            // 
+            this.CboFormaPagoConsulta.FormattingEnabled = true;
+            this.CboFormaPagoConsulta.Items.AddRange(new object[] {
+            "TODAS",
+            "EFECTIVO",
+            "TRANSFERENCIA",
+            "MERCADO PAGO",
+            "TARJETA DE CREDITO",
+            "TARJETA DE DEBITO"});
+            this.CboFormaPagoConsulta.Location = new System.Drawing.Point(467, 9);
+            this.CboFormaPagoConsulta.Name = "CboFormaPagoConsulta";
+            this.CboFormaPagoConsulta.Size = new System.Drawing.Size(121, 21);
+            this.CboFormaPagoConsulta.TabIndex = 14;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(381, 12);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Forma de Pago";
             // 
             // label2
             // 
@@ -150,11 +209,7 @@
             // 
             this.PanelMostrar.BackColor = System.Drawing.Color.Moccasin;
             this.PanelMostrar.Controls.Add(this.TxtTotalD);
-            this.PanelMostrar.Controls.Add(this.TxtTotalImpuestoD);
-            this.PanelMostrar.Controls.Add(this.TxtSubtotalD);
             this.PanelMostrar.Controls.Add(this.label14);
-            this.PanelMostrar.Controls.Add(this.label13);
-            this.PanelMostrar.Controls.Add(this.label12);
             this.PanelMostrar.Controls.Add(this.BtnCerrarDetalle);
             this.PanelMostrar.Controls.Add(this.DgvMostrarDetalle);
             this.PanelMostrar.Location = new System.Drawing.Point(200, 41);
@@ -166,53 +221,19 @@
             // TxtTotalD
             // 
             this.TxtTotalD.Enabled = false;
-            this.TxtTotalD.Location = new System.Drawing.Point(757, 375);
+            this.TxtTotalD.Location = new System.Drawing.Point(779, 352);
             this.TxtTotalD.Name = "TxtTotalD";
             this.TxtTotalD.Size = new System.Drawing.Size(100, 20);
             this.TxtTotalD.TabIndex = 7;
             // 
-            // TxtTotalImpuestoD
-            // 
-            this.TxtTotalImpuestoD.Enabled = false;
-            this.TxtTotalImpuestoD.Location = new System.Drawing.Point(757, 349);
-            this.TxtTotalImpuestoD.Name = "TxtTotalImpuestoD";
-            this.TxtTotalImpuestoD.Size = new System.Drawing.Size(100, 20);
-            this.TxtTotalImpuestoD.TabIndex = 6;
-            // 
-            // TxtSubtotalD
-            // 
-            this.TxtSubtotalD.Enabled = false;
-            this.TxtSubtotalD.Location = new System.Drawing.Point(757, 323);
-            this.TxtSubtotalD.Name = "TxtSubtotalD";
-            this.TxtSubtotalD.Size = new System.Drawing.Size(100, 20);
-            this.TxtSubtotalD.TabIndex = 5;
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(673, 378);
+            this.label14.Location = new System.Drawing.Point(695, 355);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(31, 13);
             this.label14.TabIndex = 4;
             this.label14.Text = "Total";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(673, 352);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(77, 13);
-            this.label13.TabIndex = 3;
-            this.label13.Text = "Total Impuesto";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(673, 326);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(46, 13);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Subtotal";
             // 
             // BtnCerrarDetalle
             // 
@@ -281,69 +302,6 @@
             // 
             this.ErrorIcono.ContainerControl = this;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(381, 12);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 13);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Forma de Pago";
-            // 
-            // CboFormaPagoConsulta
-            // 
-            this.CboFormaPagoConsulta.FormattingEnabled = true;
-            this.CboFormaPagoConsulta.Items.AddRange(new object[] {
-            "TODAS",
-            "EFECTIVO",
-            "TRANSFERENCIA",
-            "MERCADO PAGO",
-            "TARJETA DE CREDITO",
-            "TARJETA DE DEBITO"});
-            this.CboFormaPagoConsulta.Location = new System.Drawing.Point(467, 9);
-            this.CboFormaPagoConsulta.Name = "CboFormaPagoConsulta";
-            this.CboFormaPagoConsulta.Size = new System.Drawing.Size(121, 21);
-            this.CboFormaPagoConsulta.TabIndex = 14;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(605, 12);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 13);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "Moneda";
-            // 
-            // CboMonedaConsulta
-            // 
-            this.CboMonedaConsulta.FormattingEnabled = true;
-            this.CboMonedaConsulta.Items.AddRange(new object[] {
-            "TODAS",
-            "PESOS",
-            "DOLARES"});
-            this.CboMonedaConsulta.Location = new System.Drawing.Point(658, 8);
-            this.CboMonedaConsulta.Name = "CboMonedaConsulta";
-            this.CboMonedaConsulta.Size = new System.Drawing.Size(121, 21);
-            this.CboMonedaConsulta.TabIndex = 16;
-            // 
-            // LblPesos
-            // 
-            this.LblPesos.AutoSize = true;
-            this.LblPesos.Location = new System.Drawing.Point(898, 497);
-            this.LblPesos.Name = "LblPesos";
-            this.LblPesos.Size = new System.Drawing.Size(39, 13);
-            this.LblPesos.TabIndex = 17;
-            this.LblPesos.Text = "Pesos:";
-            // 
-            // LblDolares
-            // 
-            this.LblDolares.AutoSize = true;
-            this.LblDolares.Location = new System.Drawing.Point(898, 531);
-            this.LblDolares.Name = "LblDolares";
-            this.LblDolares.Size = new System.Drawing.Size(46, 13);
-            this.LblDolares.TabIndex = 18;
-            this.LblDolares.Text = "Dolares:";
-            // 
             // FrmConsulta_VentaFechas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -377,11 +335,7 @@
         private System.Windows.Forms.Button BtnComprobante;
         private System.Windows.Forms.Panel PanelMostrar;
         private System.Windows.Forms.TextBox TxtTotalD;
-        private System.Windows.Forms.TextBox TxtTotalImpuestoD;
-        private System.Windows.Forms.TextBox TxtSubtotalD;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button BtnCerrarDetalle;
         private System.Windows.Forms.Button BtnBuscar;
         private System.Windows.Forms.Label LblTotal;
