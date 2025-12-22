@@ -65,3 +65,7 @@ GO
 PRINT 'Stored procedures actualizados correctamente. Se eliminó el parámetro tipo_comprobante.';
 PRINT 'NOTA: Si la columna tipo_comprobante es NOT NULL en las tablas, necesitarás modificarla primero o usar un valor por defecto.';
 
+
+
+
+

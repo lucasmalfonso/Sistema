@@ -8,6 +8,8 @@
     @detalle type_detalle_venta READONLY
 AS
 BEGIN
+    DECLARE @idventa int;
+    
     INSERT INTO venta (
         idusuario,
         idcliente,
@@ -29,7 +31,17 @@ BEGIN
         'Aceptado'
     );
     
-    INSERT detalle_venta (idventa,idarticulo,cantidad,precio,descuento)
-    SELECT @@IDENTITY,d.idarticulo,d.cantidad,d.precio,d.descuento
-    FROM @detalle d;
+    SET @idventa = SCOPE_IDENTITY();
+    
+    -- Insertar artículos
+    INSERT detalle_venta (idventa,idarticulo,idservicio,cantidad,precio,descuento)
+    SELECT @idventa, d.idarticulo, NULL, d.cantidad, d.precio, d.descuento
+    FROM @detalle d
+    WHERE d.idarticulo IS NOT NULL;
+    
+    -- Insertar servicios
+    INSERT detalle_venta (idventa,idarticulo,idservicio,cantidad,precio,descuento)
+    SELECT @idventa, NULL, d.idservicio, d.cantidad, d.precio, d.descuento
+    FROM @detalle d
+    WHERE d.idservicio IS NOT NULL;
 END

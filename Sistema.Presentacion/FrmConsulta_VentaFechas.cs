@@ -124,6 +124,7 @@ namespace Sistema.Presentacion
             try
             {
                 DgvMostrarDetalle.DataSource = NVenta.ListarDetalle(Convert.ToInt32(DgvListado.CurrentRow.Cells["ID"].Value));
+                this.FormatoMostrarDetalle();
                 decimal Total = Convert.ToDecimal(DgvListado.CurrentRow.Cells["Total"].Value);
                 TxtTotalD.Text = Total.ToString("#0.00#");
                 PanelMostrar.Visible = true;
@@ -131,6 +132,61 @@ namespace Sistema.Presentacion
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void FormatoMostrarDetalle()
+        {
+            if (DgvMostrarDetalle.Columns.Count > 0)
+            {
+                // Ocultar columnas internas
+                if (DgvMostrarDetalle.Columns["ID"] != null)
+                {
+                    DgvMostrarDetalle.Columns["ID"].Visible = false;
+                }
+                if (DgvMostrarDetalle.Columns["TIPO"] != null)
+                {
+                    DgvMostrarDetalle.Columns["TIPO"].Visible = false;
+                }
+                
+                // Formatear columna ARTICULO
+                if (DgvMostrarDetalle.Columns["ARTICULO"] != null)
+                {
+                    DgvMostrarDetalle.Columns["ARTICULO"].HeaderText = "ARTICULO/SERVICIO";
+                    DgvMostrarDetalle.Columns["ARTICULO"].Width = 200;
+                    DgvMostrarDetalle.Columns["ARTICULO"].ReadOnly = true;
+                }
+                
+                // Formatear columna CANTIDAD
+                if (DgvMostrarDetalle.Columns["CANTIDAD"] != null)
+                {
+                    DgvMostrarDetalle.Columns["CANTIDAD"].Width = 80;
+                    DgvMostrarDetalle.Columns["CANTIDAD"].ReadOnly = true;
+                }
+                
+                // Formatear columna PRECIO
+                if (DgvMostrarDetalle.Columns["PRECIO"] != null)
+                {
+                    DgvMostrarDetalle.Columns["PRECIO"].Width = 80;
+                    DgvMostrarDetalle.Columns["PRECIO"].DefaultCellStyle.Format = "N2";
+                    DgvMostrarDetalle.Columns["PRECIO"].ReadOnly = true;
+                }
+                
+                // Formatear columna DESCUENTO
+                if (DgvMostrarDetalle.Columns["DESCUENTO"] != null)
+                {
+                    DgvMostrarDetalle.Columns["DESCUENTO"].Width = 80;
+                    DgvMostrarDetalle.Columns["DESCUENTO"].DefaultCellStyle.Format = "N2";
+                    DgvMostrarDetalle.Columns["DESCUENTO"].ReadOnly = true;
+                }
+                
+                // Formatear columna IMPORTE
+                if (DgvMostrarDetalle.Columns["IMPORTE"] != null)
+                {
+                    DgvMostrarDetalle.Columns["IMPORTE"].Width = 100;
+                    DgvMostrarDetalle.Columns["IMPORTE"].DefaultCellStyle.Format = "N2";
+                    DgvMostrarDetalle.Columns["IMPORTE"].ReadOnly = true;
+                }
             }
         }
 

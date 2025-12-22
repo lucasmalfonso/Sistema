@@ -126,5 +126,17 @@
     <Build Include="dbo\Stored Procedures\categoria_existe.sql" />
     <Build Include="dbo\User Defined Types\types_detalle_ingreso.sql" />
     <Build Include="dbo\User Defined Types\type_detalle_venta.sql" />
+    <Build Include="dbo\Tables\servicio.sql" />
+    <Build Include="dbo\Stored Procedures\servicio_listar.sql" />
+    <Build Include="dbo\Stored Procedures\servicio_insertar.sql" />
+    <Build Include="dbo\Stored Procedures\servicio_existe.sql" />
+    <Build Include="dbo\Stored Procedures\servicio_eliminar.sql" />
+    <Build Include="dbo\Stored Procedures\servicio_desactivar.sql" />
+    <Build Include="dbo\Stored Procedures\servicio_buscar.sql" />
+    <Build Include="dbo\Stored Procedures\servicio_buscar_venta.sql" />
+    <Build Include="dbo\Stored Procedures\servicio_buscar_nombre.sql" />
+    <Build Include="dbo\Stored Procedures\servicio_buscar_nombre_venta.sql" />
+    <Build Include="dbo\Stored Procedures\servicio_actualizar.sql" />
+    <Build Include="dbo\Stored Procedures\servicio_activar.sql" />
   </ItemGroup>
 </Project>

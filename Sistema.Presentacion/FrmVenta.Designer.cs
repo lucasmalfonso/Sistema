@@ -93,7 +93,7 @@
             // 
             // BtnVerArticulos
             // 
-            this.BtnVerArticulos.Location = new System.Drawing.Point(558, 27);
+            this.BtnVerArticulos.Location = new System.Drawing.Point(573, 28);
             this.BtnVerArticulos.Name = "BtnVerArticulos";
             this.BtnVerArticulos.Size = new System.Drawing.Size(75, 23);
             this.BtnVerArticulos.TabIndex = 2;
@@ -106,9 +106,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(18, 35);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 13);
+            this.label7.Size = new System.Drawing.Size(85, 13);
             this.label7.TabIndex = 0;
-            this.label7.Text = "Articulo";
+            this.label7.Text = "Articulo/Servicio";
             // 
             // groupBox1
             // 
@@ -226,6 +226,7 @@
             this.DgvMostrarDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvMostrarDetalle.Size = new System.Drawing.Size(894, 275);
             this.DgvMostrarDetalle.TabIndex = 0;
+            this.DgvMostrarDetalle.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvMostrarDetalle_CellContentClick);
             // 
             // BtnAnular
             // 
@@ -322,7 +323,7 @@
             // 
             // TxtNombre
             // 
-            this.TxtNombre.Location = new System.Drawing.Point(94, 27);
+            this.TxtNombre.Location = new System.Drawing.Point(109, 28);
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(454, 20);
             this.TxtNombre.TabIndex = 1;
@@ -459,7 +460,7 @@
             this.PanelArticulos.Controls.Add(this.BtnFiltrarArticulos);
             this.PanelArticulos.Controls.Add(this.TxtBuscarArticulo);
             this.PanelArticulos.Controls.Add(this.label11);
-            this.PanelArticulos.Location = new System.Drawing.Point(55, 19);
+            this.PanelArticulos.Location = new System.Drawing.Point(55, 63);
             this.PanelArticulos.Name = "PanelArticulos";
             this.PanelArticulos.Size = new System.Drawing.Size(1069, 393);
             this.PanelArticulos.TabIndex = 10;
