@@ -13,7 +13,7 @@ namespace Sistema.Presentacion
 {
     public partial class FrmUsuario : Form
     {
-        private string EmailAnt;
+        private string UsuarioAnt;
         public FrmUsuario()
         {
             InitializeComponent();
@@ -59,10 +59,11 @@ namespace Sistema.Presentacion
             DgvListado.Columns[6].Width = 100;
             DgvListado.Columns[6].HeaderText = "Numero Doc.";
             DgvListado.Columns[7].Width = 120;
-            DgvListado.Columns[7].HeaderText = "Dirección";
-            DgvListado.Columns[8].Width = 100;
-            DgvListado.Columns[8].HeaderText = "Teléfono";
+            DgvListado.Columns[7].HeaderText = "Teléfono";
+            DgvListado.Columns[8].Width = 120;
+            DgvListado.Columns[8].HeaderText = "Email";
             DgvListado.Columns[9].Width = 120;
+            DgvListado.Columns[9].HeaderText = "Usuario";
 
         }
         private void Limpiar()
@@ -71,10 +72,10 @@ namespace Sistema.Presentacion
             TxtNombre.Clear();
             TxtId.Clear();
             TxtNumDocumento.Clear();
-            TxtDireccion.Clear();
-            TxtTelefono.Clear();
             TxtEmail.Clear();
-            TxtClave.Clear();
+            TxtTelefono.Clear();
+            TxtUsuario.Clear();
+            TxtContraseña.Clear();
             BtnInsertar.Visible = true;
             BtnActualizar.Visible = false;
             ErrorIcono.Clear();
@@ -126,17 +127,17 @@ namespace Sistema.Presentacion
             try
             {
                 string Rpta = "";
-                if (CboRol.Text == string.Empty || TxtNombre.Text == String.Empty || TxtEmail.Text ==string.Empty ||TxtClave.Text ==string.Empty)
+                if (CboRol.Text == string.Empty || TxtNombre.Text == String.Empty || TxtUsuario.Text ==string.Empty ||TxtContraseña.Text ==string.Empty)
                 {
                     this.MensajeError("Falta ingresar algunos datos, serán remarcados");
                     ErrorIcono.SetError(CboRol, "Seleccione un rol");
                     ErrorIcono.SetError(TxtNombre, "Ingrese un nombre");
-                    ErrorIcono.SetError(TxtEmail, "Ingrese un email");
-                    ErrorIcono.SetError(TxtClave, "Ingrese una clave");
+                    ErrorIcono.SetError(TxtUsuario, "Ingrese un usuario");
+                    ErrorIcono.SetError(TxtContraseña, "Ingrese una clave");
                 }
                 else
                 {
-                    Rpta = NUsuario.Insertar(Convert.ToInt32(CboRol.SelectedValue),TxtNombre.Text.Trim(),CboTipoDocumento.Text,TxtNumDocumento.Text.Trim(),TxtDireccion.Text.Trim(),TxtTelefono.Text.Trim(),TxtEmail.Text.Trim(),TxtClave.Text.Trim());
+                    Rpta = NUsuario.Insertar(Convert.ToInt32(CboRol.SelectedValue),TxtNombre.Text.Trim(),CboTipoDocumento.Text,TxtNumDocumento.Text.Trim(),string.Empty,TxtTelefono.Text.Trim(),TxtEmail.Text.Trim(),TxtUsuario.Text.Trim(),TxtContraseña.Text.Trim());
                     if (Rpta.Equals("OK"))
                     {
                         this.MensajeOk("Se insertó de forma correcta el registro");
@@ -166,10 +167,10 @@ namespace Sistema.Presentacion
                 TxtNombre.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Nombre"].Value);
                 CboTipoDocumento.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Tipo_Documento"].Value);
                 TxtNumDocumento.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Num_Documento"].Value);
-                TxtDireccion.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Direccion"].Value);
-                TxtTelefono.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Telefono"].Value);
-                this.EmailAnt = Convert.ToString(DgvListado.CurrentRow.Cells["Email"].Value);
                 TxtEmail.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Email"].Value);
+                TxtTelefono.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Telefono"].Value);
+                this.UsuarioAnt = Convert.ToString(DgvListado.CurrentRow.Cells["Usuario"].Value);
+                TxtUsuario.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Usuario"].Value);
                 TabGeneral.SelectedIndex = 1;
             }
             catch (Exception ex)
@@ -183,16 +184,16 @@ namespace Sistema.Presentacion
             try
             {
                 string Rpta = "";
-                if (TxtId.Text == string.Empty || CboRol.Text == string.Empty || TxtNombre.Text == String.Empty || TxtEmail.Text == string.Empty)
+                if (TxtId.Text == string.Empty || CboRol.Text == string.Empty || TxtNombre.Text == String.Empty || TxtUsuario.Text == string.Empty)
                 {
                     this.MensajeError("Falta ingresar algunos datos, serán remarcados");
                     ErrorIcono.SetError(CboRol, "Seleccione un rol");
                     ErrorIcono.SetError(TxtNombre, "Ingrese un nombre");
-                    ErrorIcono.SetError(TxtEmail, "Ingrese un email");
+                    ErrorIcono.SetError(TxtUsuario, "Ingrese un usuario");
                 }
                 else
                 {
-                    Rpta = NUsuario.Actualizar(Convert.ToInt32(TxtId.Text), Convert.ToInt32(CboRol.SelectedValue), TxtNombre.Text.Trim(), CboTipoDocumento.Text, TxtNumDocumento.Text.Trim(), TxtDireccion.Text.Trim(), TxtTelefono.Text.Trim(),this.EmailAnt, TxtEmail.Text.Trim(), TxtClave.Text.Trim());
+                    Rpta = NUsuario.Actualizar(Convert.ToInt32(TxtId.Text), Convert.ToInt32(CboRol.SelectedValue), TxtNombre.Text.Trim(), CboTipoDocumento.Text, TxtNumDocumento.Text.Trim(), string.Empty, TxtTelefono.Text.Trim(),TxtEmail.Text.Trim(),this.UsuarioAnt, TxtUsuario.Text.Trim(), TxtContraseña.Text.Trim());
                     if (Rpta.Equals("OK"))
                     {
                         this.MensajeOk("Se actualizó de forma correcta el registro");
