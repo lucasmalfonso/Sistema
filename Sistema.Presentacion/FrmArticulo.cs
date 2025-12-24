@@ -363,7 +363,7 @@ namespace Sistema.Presentacion
             try
             {
                 DialogResult Opcion;
-                Opcion = MessageBox.Show("¿Realmente desea desactivar el(los) registro(s) seleccionados?", "Sistema de Ventas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                Opcion = MessageBox.Show("¿Realmente desea activar el(los) registro(s) seleccionados?", "Sistema de Ventas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (Opcion == DialogResult.OK)
                 {
                     int Codigo;

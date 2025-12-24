@@ -6,9 +6,10 @@
     [num_documento]  VARCHAR (20)    NULL,
     [direccion]      VARCHAR (70)    NULL,
     [telefono]       VARCHAR (20)    NULL,
-    [email]          VARCHAR (50)    NOT NULL,
     [clave]          VARBINARY (MAX) NOT NULL,
     [estado]         BIT             DEFAULT ((1)) NULL,
+    [usuario]        VARCHAR (50)    NOT NULL,
+    [email]          VARCHAR (50)    NULL,
     PRIMARY KEY CLUSTERED ([idusuario] ASC),
     FOREIGN KEY ([idrol]) REFERENCES [dbo].[rol] ([idrol])
 );

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using Sistema.Negocio;
@@ -76,7 +75,6 @@ namespace Sistema.Presentacion
             DgvListado.Columns["Estado"].Width = 90;
 
         }
-
         private void Limpiar()
         {
             TxtBuscar.Clear();
@@ -103,51 +101,34 @@ namespace Sistema.Presentacion
         }
         private void CrearTabla()
         {
-            DtDetalle = new DataTable();
-            DtDetalle.Columns.Add("idarticulo", typeof(int));
-            DtDetalle.Columns.Add("idservicio", typeof(int));
-            DtDetalle.Columns.Add("articulo", typeof(string));
-            DtDetalle.Columns.Add("stock", typeof(int));
-            DtDetalle.Columns.Add("cantidad", typeof(int));
-            DtDetalle.Columns.Add("precio", typeof(decimal));
-            DtDetalle.Columns.Add("descuento", typeof(decimal));
-            DtDetalle.Columns.Add("importe", typeof(decimal));
+            this.DtDetalle.Columns.Add("idarticulo", System.Type.GetType("System.Int32"));
+            this.DtDetalle.Columns.Add("articulo", System.Type.GetType("System.String"));
+            this.DtDetalle.Columns.Add("stock", System.Type.GetType("System.Int32"));
+            this.DtDetalle.Columns.Add("cantidad", System.Type.GetType("System.Int32"));
+            this.DtDetalle.Columns.Add("precio", System.Type.GetType("System.Decimal"));
+            this.DtDetalle.Columns.Add("descuento", System.Type.GetType("System.Decimal"));
+            this.DtDetalle.Columns.Add("importe", System.Type.GetType("System.Decimal"));
 
-            DgvDetalle.AutoGenerateColumns = true; // si no tenés columnas manuales en diseñador
-            DgvDetalle.DataSource = DtDetalle;
+            DgvDetalle.DataSource = this.DtDetalle;
 
-            // Ocultar IDs
-            DgvDetalle.Columns["idarticulo"].Visible = false;
-            DgvDetalle.Columns["idservicio"].Visible = false;
+            DgvDetalle.Columns[0].Visible = false;
+            DgvDetalle.Columns[1].HeaderText = "ARTICULO";
+            DgvDetalle.Columns[1].Width = 200;
+            DgvDetalle.Columns[2].HeaderText = "STOCK";
+            DgvDetalle.Columns[2].Width = 80;
+            DgvDetalle.Columns[3].HeaderText = "CANTIDAD";
+            DgvDetalle.Columns[3].Width = 70;
+            DgvDetalle.Columns[4].HeaderText = "PRECIO";
+            DgvDetalle.Columns[4].Width = 70;
+            DgvDetalle.Columns[5].HeaderText = "DESCUENTO";
+            DgvDetalle.Columns[5].Width = 80;
+            DgvDetalle.Columns[6].HeaderText = "IMPORTE";
+            DgvDetalle.Columns[6].Width = 80;
 
-            // Mostrar / formatear
-            DgvDetalle.Columns["articulo"].HeaderText = "ARTICULO/SERVICIO";
-            DgvDetalle.Columns["articulo"].Width = 200;
-
-            DgvDetalle.Columns["stock"].HeaderText = "STOCK";
-            DgvDetalle.Columns["stock"].Width = 80;
-
-            DgvDetalle.Columns["cantidad"].HeaderText = "CANTIDAD";
-            DgvDetalle.Columns["cantidad"].Width = 70;
-
-            DgvDetalle.Columns["precio"].HeaderText = "PRECIO";
-            DgvDetalle.Columns["precio"].Width = 70;
-            DgvDetalle.Columns["precio"].DefaultCellStyle.Format = "N2";
-
-            DgvDetalle.Columns["descuento"].HeaderText = "DESCUENTO";
-            DgvDetalle.Columns["descuento"].Width = 80;
-            DgvDetalle.Columns["descuento"].DefaultCellStyle.Format = "N2";
-
-            DgvDetalle.Columns["importe"].HeaderText = "IMPORTE";
-            DgvDetalle.Columns["importe"].Width = 90;
-            DgvDetalle.Columns["importe"].DefaultCellStyle.Format = "N2";
-
-            // Solo lectura
-            DgvDetalle.Columns["articulo"].ReadOnly = true;
-            DgvDetalle.Columns["stock"].ReadOnly = true;
-            DgvDetalle.Columns["importe"].ReadOnly = true;
+            DgvDetalle.Columns[1].ReadOnly = true;
+            DgvDetalle.Columns[2].ReadOnly = true;
+            DgvDetalle.Columns[6].ReadOnly = true;
         }
-
         private void FrmVenta_Load(object sender, EventArgs e)
         {
             this.Listar();
@@ -172,26 +153,14 @@ namespace Sistema.Presentacion
                 if (e.KeyCode == Keys.Enter)
                 {
                     DataTable Tabla = new DataTable();
-                    // Primero busca en artículos
                     Tabla = NArticulo.BuscarNombreVenta(TxtNombre.Text.Trim());
-                    if (Tabla.Rows.Count > 0)
+                    if (Tabla.Rows.Count <= 0)
                     {
-                        // Es un artículo
-                        this.AgregarDetalle(Convert.ToInt32(Tabla.Rows[0][0]), Convert.ToString(Tabla.Rows[0][1]), Convert.ToInt32(Tabla.Rows[0][3]), Convert.ToDecimal(Tabla.Rows[0][2]));
+                        this.MensajeError("No existe el artículo con ese nombre en el sistema o no hay stock de ese artículo");
                     }
                     else
                     {
-                        // Si no encuentra artículo, busca en servicios
-                        Tabla = NServicio.BuscarNombreVenta(TxtNombre.Text.Trim());
-                        if (Tabla.Rows.Count > 0)
-                        {
-                            // Es un servicio (no tiene stock, usamos 0)
-                            this.AgregarDetalle(Convert.ToInt32(Tabla.Rows[0][0]), Convert.ToString(Tabla.Rows[0][1]), 0, Convert.ToDecimal(Tabla.Rows[0][2]));
-                        }
-                        else
-                        {
-                            this.MensajeError("No existe el artículo o servicio con ese nombre en el sistema o no está disponible");
-                        }
+                        this.AgregarDetalle(Convert.ToInt32(Tabla.Rows[0][0]), Convert.ToString(Tabla.Rows[0][1]), Convert.ToInt32(Tabla.Rows[0][3]), Convert.ToDecimal(Tabla.Rows[0][2]));
                     }
                 }
             }
@@ -202,44 +171,20 @@ namespace Sistema.Presentacion
         }
         private void AgregarDetalle(int IdArticulo, string Nombre, int Stock, decimal Precio)
         {
-            // Si Stock es 0, es un servicio, sino es un artículo
-            bool EsServicio = (Stock == 0);
-            int IdServicio = EsServicio ? IdArticulo : 0;
-            int IdArticuloReal = EsServicio ? 0 : IdArticulo;
-            
             bool Agregar = true;
             foreach (DataRow FilaTemp in this.DtDetalle.Rows)
             {
-                if (EsServicio)
+                if (Convert.ToInt32(FilaTemp["idarticulo"]) == IdArticulo)
                 {
-                    if (FilaTemp["idservicio"] != DBNull.Value && Convert.ToInt32(FilaTemp["idservicio"]) == IdServicio)
-                    {
-                        Agregar = false;
-                        this.MensajeError("El servicio ya ha sido agregado al detalle");
-                    }
-                }
-                else
-                {
-                    if (FilaTemp["idarticulo"] != DBNull.Value && Convert.ToInt32(FilaTemp["idarticulo"]) == IdArticuloReal)
-                    {
-                        Agregar = false;
-                        this.MensajeError("El artículo ya ha sido agregado al detalle");
-                    }
+                    Agregar = false;
+                    this.MensajeError("El artículo ya ha sido agregado al detalle");
                 }
             }
             if (Agregar)
             {
+
                 DataRow Fila = DtDetalle.NewRow();
-                if (EsServicio)
-                {
-                    Fila["idarticulo"] = DBNull.Value;
-                    Fila["idservicio"] = IdServicio;
-                }
-                else
-                {
-                    Fila["idarticulo"] = IdArticuloReal;
-                    Fila["idservicio"] = DBNull.Value;
-                }
+                Fila["idarticulo"] = IdArticulo;
                 Fila["articulo"] = Nombre;
                 Fila["stock"] = Stock;
                 Fila["cantidad"] = 1;
@@ -292,50 +237,13 @@ namespace Sistema.Presentacion
         {
             try
             {
-                DataTable TablaArticulos = NArticulo.BuscarVenta(TxtBuscarArticulo.Text.Trim());
-                DataTable TablaServicios = NServicio.BuscarVenta(TxtBuscarArticulo.Text.Trim());
-                
-                // Combinar ambas tablas
-                DataTable TablaCombinada = TablaArticulos.Clone();
-                // Agregar columna para identificar si es servicio
-                if (!TablaCombinada.Columns.Contains("EsServicio"))
-                {
-                    TablaCombinada.Columns.Add("EsServicio", typeof(bool));
-                }
-                
-                // Copiar filas de artículos
-                foreach (DataRow row in TablaArticulos.Rows)
-                {
-                    DataRow newRow = TablaCombinada.NewRow();
-                    newRow.ItemArray = row.ItemArray;
-                    newRow["EsServicio"] = false;
-                    TablaCombinada.Rows.Add(newRow);
-                }
-                
-                // Copiar filas de servicios (agregar columna Stock con valor 0)
-                foreach (DataRow row in TablaServicios.Rows)
-                {
-                    DataRow newRow = TablaCombinada.NewRow();
-                    newRow["ID"] = row["ID"];
-                    newRow["idcategoria"] = row["idcategoria"];
-                    newRow["Categoria"] = row["Categoria"];
-                    newRow["Nombre"] = row["Nombre"];
-                    newRow["Precio_Venta"] = row["Precio_Venta"];
-                    newRow["Stock"] = 0; // Los servicios no tienen stock
-                    newRow["Descripcion"] = row["Descripcion"];
-                    newRow["Imagen"] = row["Imagen"];
-                    newRow["Estado"] = row["Estado"];
-                    newRow["EsServicio"] = true; // Marcar como servicio
-                    TablaCombinada.Rows.Add(newRow);
-                }
-                
-                DgvArticulos.DataSource = TablaCombinada;
+                DgvArticulos.DataSource = NArticulo.Buscar(TxtBuscarArticulo.Text.Trim());
                 this.FormatoArticulos();
                 LblTotalArticulos.Text = "Total Registros: " + Convert.ToString(DgvArticulos.Rows.Count);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + ex.StackTrace);
+                MessageBox.Show(ex.Message);
             }
         }
         private void DgvArticulos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -344,36 +252,10 @@ namespace Sistema.Presentacion
             string Nombre;
             decimal Precio;
             int Stock;
-            bool EsServicio = false;
-            
             IdArticulo = Convert.ToInt32(DgvArticulos.CurrentRow.Cells["ID"].Value);
             Nombre = Convert.ToString(DgvArticulos.CurrentRow.Cells["Nombre"].Value);
-            
-            // Verificar si es servicio usando la columna EsServicio si existe
-            if (DgvArticulos.CurrentRow.Cells["EsServicio"] != null && DgvArticulos.CurrentRow.Cells["EsServicio"].Value != DBNull.Value)
-            {
-                EsServicio = Convert.ToBoolean(DgvArticulos.CurrentRow.Cells["EsServicio"].Value);
-            }
-            
-            // Si la columna Stock existe, usar su valor, sino usar 0 (es un servicio)
-            if (DgvArticulos.CurrentRow.Cells["Stock"].Value != null && DgvArticulos.CurrentRow.Cells["Stock"].Value != DBNull.Value)
-            {
-                Stock = Convert.ToInt32(DgvArticulos.CurrentRow.Cells["Stock"].Value);
-            }
-            else
-            {
-                Stock = 0; // Es un servicio
-                EsServicio = true;
-            }
-            
+            Stock = Convert.ToInt32(DgvArticulos.CurrentRow.Cells["Stock"].Value);
             Precio = Convert.ToDecimal(DgvArticulos.CurrentRow.Cells["Precio_Venta"].Value);
-            
-            // Si es servicio, forzar stock a 0
-            if (EsServicio)
-            {
-                Stock = 0;
-            }
-            
             this.AgregarDetalle(IdArticulo, Nombre, Stock, Precio);
         }
         private void DgvDetalle_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -384,13 +266,11 @@ namespace Sistema.Presentacion
             int Stock = Convert.ToInt32(Fila["stock"]);
             decimal Precio = Convert.ToDecimal(Fila["precio"]);
             decimal Descuento = Convert.ToDecimal(Fila["descuento"]);
-            // Solo validar stock si es mayor a 0 (los servicios tienen stock = 0)
-            if (Stock > 0 && Cantidad > Stock)
+            if (Cantidad > Stock)
             {
                 Cantidad = Stock;
                 this.MensajeError("La cantidad de venta del articulo " + Articulo + " supera el stock disponible " + Stock);
             }
-            Fila["cantidad"] = Cantidad;
             Fila["importe"] = (Cantidad * Precio) - Descuento;
             this.CalcularTotales();
         }
@@ -400,17 +280,51 @@ namespace Sistema.Presentacion
             try
             {
                 string Rpta = "";
-                if (TxtIdCliente.Text == String.Empty || DtDetalle.Rows.Count == 0)
+                // Limpiar errores previos
+                ErrorIcono.Clear();
+                
+                // Validar campos obligatorios
+                bool hayErrores = false;
+                
+                if (TxtIdCliente.Text == String.Empty)
+                {
+                    ErrorIcono.SetError(TxtIdCliente, "Seleccione un cliente");
+                    hayErrores = true;
+                }
+                
+                if (DtDetalle.Rows.Count == 0)
+                {
+                    ErrorIcono.SetError(DgvDetalle, "Ingrese los detalles del ingreso");
+                    hayErrores = true;
+                }
+                
+                if (CboFormadePago.SelectedIndex == -1 || string.IsNullOrWhiteSpace(CboFormadePago.Text))
+                {
+                    ErrorIcono.SetError(CboFormadePago, "Seleccione una forma de pago");
+                    hayErrores = true;
+                }
+                
+                if (CboMoneda.SelectedIndex == -1 || string.IsNullOrWhiteSpace(CboMoneda.Text))
+                {
+                    ErrorIcono.SetError(CboMoneda, "Seleccione una moneda");
+                    hayErrores = true;
+                }
+                
+                if (CboCuota.SelectedIndex == -1 || string.IsNullOrWhiteSpace(CboCuota.Text))
+                {
+                    ErrorIcono.SetError(CboCuota, "Seleccione una cuota");
+                    hayErrores = true;
+                }
+                
+                if (hayErrores)
                 {
                     this.MensajeError("Falta ingresar algunos datos, serán remarcados");
-                    ErrorIcono.SetError(TxtIdCliente, "Seleccione un cliente");
-                    ErrorIcono.SetError(DgvDetalle, "Ingrese los detalles del ingreso");
                 }
                 else
                 {
-                    string formaPago = !string.IsNullOrWhiteSpace(CboFormadePago.Text) ? CboFormadePago.Text.Trim() : "";
-                    string cuota = !string.IsNullOrWhiteSpace(CboCuota.Text) ? CboCuota.Text.Trim() : "";
-                    string moneda = !string.IsNullOrWhiteSpace(CboMoneda.Text) ? CboMoneda.Text.Trim() : "";
+                    string formaPago = CboFormadePago.Text.Trim();
+                    string cuota = CboCuota.Text.Trim();
+                    string moneda = CboMoneda.Text.Trim();
                     Rpta = NVenta.Insertar(Convert.ToInt32(TxtIdCliente.Text), Variables.IdUsuario, Convert.ToDecimal(TxtTotal.Text), formaPago, cuota, moneda, DtDetalle);
                     if (Rpta.Equals("OK"))
                     {
@@ -440,18 +354,8 @@ namespace Sistema.Presentacion
         {
             try
             {
-                // Limpiar el DataSource y las columnas previas completamente
-                DgvMostrarDetalle.DataSource = null;
-                DgvMostrarDetalle.Columns.Clear();
-                DgvMostrarDetalle.AutoGenerateColumns = true;
-                
-                // Asignar el nuevo DataSource
-                DataTable dtDetalle = NVenta.ListarDetalle(Convert.ToInt32(DgvListado.CurrentRow.Cells["ID"].Value));
-                DgvMostrarDetalle.DataSource = dtDetalle;
-                
-                // Formatear las columnas después de asignar el DataSource
+                DgvMostrarDetalle.DataSource = NVenta.ListarDetalle(Convert.ToInt32(DgvListado.CurrentRow.Cells["ID"].Value));
                 this.FormatoMostrarDetalle();
-                
                 decimal Total = Convert.ToDecimal(DgvListado.CurrentRow.Cells["Total"].Value);
                 TxtTotalD.Text = Total.ToString("#0.00#");
                 PanelMostrar.Visible = true;
@@ -466,66 +370,6 @@ namespace Sistema.Presentacion
         {
             if (DgvMostrarDetalle.Columns.Count > 0)
             {
-                // Lista de columnas válidas que deben mostrarse
-                string[] columnasValidas = { "ID", "TIPO", "ARTICULO", "CANTIDAD", "PRECIO", "DESCUENTO", "IMPORTE" };
-                
-                // Primero, eliminar TODAS las columnas que no están en la lista de válidas
-                var columnasAEliminar = new List<DataGridViewColumn>();
-                foreach (DataGridViewColumn col in DgvMostrarDetalle.Columns)
-                {
-                    string colNameUpper = col.Name.ToUpper();
-                    bool esValida = false;
-                    
-                    // Verificar si es una columna válida
-                    foreach (string colValida in columnasValidas)
-                    {
-                        if (colNameUpper == colValida.ToUpper())
-                        {
-                            esValida = true;
-                            break;
-                        }
-                    }
-                    
-                    // Si no es válida, marcarla para eliminar
-                    if (!esValida)
-                    {
-                        columnasAEliminar.Add(col);
-                    }
-                }
-                
-                // Eliminar columnas no válidas
-                foreach (var col in columnasAEliminar)
-                {
-                    DgvMostrarDetalle.Columns.Remove(col);
-                }
-                
-                // Ahora eliminar duplicados de IMPORTE (mantener solo una)
-                columnasAEliminar.Clear();
-                DataGridViewColumn columnaImportePrincipal = null;
-                
-                foreach (DataGridViewColumn col in DgvMostrarDetalle.Columns)
-                {
-                    string colNameUpper = col.Name.ToUpper();
-                    if (colNameUpper == "IMPORTE")
-                    {
-                        if (columnaImportePrincipal == null)
-                        {
-                            columnaImportePrincipal = col;
-                        }
-                        else
-                        {
-                            // Si ya hay una columna IMPORTE, eliminar esta
-                            columnasAEliminar.Add(col);
-                        }
-                    }
-                }
-                
-                // Eliminar duplicados de IMPORTE
-                foreach (var col in columnasAEliminar)
-                {
-                    DgvMostrarDetalle.Columns.Remove(col);
-                }
-                
                 // Ocultar columnas internas
                 if (DgvMostrarDetalle.Columns["ID"] != null)
                 {
@@ -542,7 +386,6 @@ namespace Sistema.Presentacion
                     DgvMostrarDetalle.Columns["ARTICULO"].HeaderText = "ARTICULO/SERVICIO";
                     DgvMostrarDetalle.Columns["ARTICULO"].Width = 200;
                     DgvMostrarDetalle.Columns["ARTICULO"].ReadOnly = true;
-                    DgvMostrarDetalle.Columns["ARTICULO"].DisplayIndex = 0;
                 }
                 
                 // Formatear columna CANTIDAD
@@ -550,7 +393,6 @@ namespace Sistema.Presentacion
                 {
                     DgvMostrarDetalle.Columns["CANTIDAD"].Width = 80;
                     DgvMostrarDetalle.Columns["CANTIDAD"].ReadOnly = true;
-                    DgvMostrarDetalle.Columns["CANTIDAD"].DisplayIndex = 1;
                 }
                 
                 // Formatear columna PRECIO
@@ -559,7 +401,6 @@ namespace Sistema.Presentacion
                     DgvMostrarDetalle.Columns["PRECIO"].Width = 80;
                     DgvMostrarDetalle.Columns["PRECIO"].DefaultCellStyle.Format = "N2";
                     DgvMostrarDetalle.Columns["PRECIO"].ReadOnly = true;
-                    DgvMostrarDetalle.Columns["PRECIO"].DisplayIndex = 2;
                 }
                 
                 // Formatear columna DESCUENTO
@@ -568,16 +409,14 @@ namespace Sistema.Presentacion
                     DgvMostrarDetalle.Columns["DESCUENTO"].Width = 80;
                     DgvMostrarDetalle.Columns["DESCUENTO"].DefaultCellStyle.Format = "N2";
                     DgvMostrarDetalle.Columns["DESCUENTO"].ReadOnly = true;
-                    DgvMostrarDetalle.Columns["DESCUENTO"].DisplayIndex = 3;
                 }
                 
-                // Formatear columna IMPORTE (asegurarse de que solo hay una)
+                // Formatear columna IMPORTE
                 if (DgvMostrarDetalle.Columns["IMPORTE"] != null)
                 {
                     DgvMostrarDetalle.Columns["IMPORTE"].Width = 100;
                     DgvMostrarDetalle.Columns["IMPORTE"].DefaultCellStyle.Format = "N2";
                     DgvMostrarDetalle.Columns["IMPORTE"].ReadOnly = true;
-                    DgvMostrarDetalle.Columns["IMPORTE"].DisplayIndex = 4;
                 }
             }
         }
@@ -662,21 +501,6 @@ namespace Sistema.Presentacion
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void label16_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DgvMostrarDetalle_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

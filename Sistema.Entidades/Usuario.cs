@@ -10,6 +10,7 @@
         public string Direccion { get; set; }
         public string Telefono { get; set; }
         public string Email { get; set; }
+        public string NombreUsuario { get; set; }
         public string Clave { get; set; }
         public bool Estado { get; set; }
 

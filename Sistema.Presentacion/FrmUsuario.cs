@@ -222,7 +222,13 @@ namespace Sistema.Presentacion
             if (e.ColumnIndex == DgvListado.Columns["Seleccionar"].Index)
             {
                 DataGridViewCheckBoxCell ChkEliminar = (DataGridViewCheckBoxCell)DgvListado.Rows[e.RowIndex].Cells["Seleccionar"];
-                ChkEliminar.Value = !Convert.ToBoolean(ChkEliminar.Value);
+                bool valorActual = false;
+                if (ChkEliminar.Value != null && ChkEliminar.Value != DBNull.Value)
+                {
+                    valorActual = Convert.ToBoolean(ChkEliminar.Value);
+                }
+                ChkEliminar.Value = !valorActual;
+                DgvListado.EndEdit();
             }
         }
 
@@ -254,25 +260,37 @@ namespace Sistema.Presentacion
                 {
                     int Codigo;
                     string Rpta = "";
+                    bool SeEncontroSeleccion = false;
 
                     foreach (DataGridViewRow row in DgvListado.Rows)
                     {
-                        if (Convert.ToBoolean(row.Cells[0].Value))
+                        if (row.Cells[0].Value != null && row.Cells[0].Value != DBNull.Value)
                         {
-                            Codigo = Convert.ToInt32(row.Cells[1].Value);
-                            Rpta = NUsuario.Eliminar(Codigo);
+                            if (Convert.ToBoolean(row.Cells[0].Value))
+                            {
+                                SeEncontroSeleccion = true;
+                                Codigo = Convert.ToInt32(row.Cells[1].Value);
+                                Rpta = NUsuario.Eliminar(Codigo);
 
-                            if (Rpta.Equals("OK"))
-                            {
-                                this.MensajeOk("Se eliminó de forma correcta el registro: " + Convert.ToString(row.Cells[4].Value));
-                            }
-                            else
-                            {
-                                this.MensajeError(Rpta);
+                                if (Rpta.Equals("OK"))
+                                {
+                                    this.MensajeOk("Se eliminó de forma correcta el registro: " + Convert.ToString(row.Cells[4].Value));
+                                }
+                                else
+                                {
+                                    this.MensajeError(Rpta);
+                                }
                             }
                         }
                     }
-                    this.Listar();
+                    if (!SeEncontroSeleccion)
+                    {
+                        this.MensajeError("No se ha seleccionado ningún registro para eliminar");
+                    }
+                    else
+                    {
+                        this.Listar();
+                    }
                 }
 
             }
@@ -292,25 +310,37 @@ namespace Sistema.Presentacion
                 {
                     int Codigo;
                     string Rpta = "";
+                    bool SeEncontroSeleccion = false;
 
                     foreach (DataGridViewRow row in DgvListado.Rows)
                     {
-                        if (Convert.ToBoolean(row.Cells[0].Value))
+                        if (row.Cells[0].Value != null && row.Cells[0].Value != DBNull.Value)
                         {
-                            Codigo = Convert.ToInt32(row.Cells[1].Value);
-                            Rpta = NUsuario.Desactivar(Codigo);
+                            if (Convert.ToBoolean(row.Cells[0].Value))
+                            {
+                                SeEncontroSeleccion = true;
+                                Codigo = Convert.ToInt32(row.Cells[1].Value);
+                                Rpta = NUsuario.Desactivar(Codigo);
 
-                            if (Rpta.Equals("OK"))
-                            {
-                                this.MensajeOk("Se desactivó de forma correcta el registro: " + Convert.ToString(row.Cells[4].Value));
-                            }
-                            else
-                            {
-                                this.MensajeError(Rpta);
+                                if (Rpta.Equals("OK"))
+                                {
+                                    this.MensajeOk("Se desactivó de forma correcta el registro: " + Convert.ToString(row.Cells[4].Value));
+                                }
+                                else
+                                {
+                                    this.MensajeError(Rpta);
+                                }
                             }
                         }
                     }
-                    this.Listar();
+                    if (!SeEncontroSeleccion)
+                    {
+                        this.MensajeError("No se ha seleccionado ningún registro para desactivar");
+                    }
+                    else
+                    {
+                        this.Listar();
+                    }
                 }
 
             }
@@ -330,25 +360,37 @@ namespace Sistema.Presentacion
                 {
                     int Codigo;
                     string Rpta = "";
+                    bool SeEncontroSeleccion = false;
 
                     foreach (DataGridViewRow row in DgvListado.Rows)
                     {
-                        if (Convert.ToBoolean(row.Cells[0].Value))
+                        if (row.Cells[0].Value != null && row.Cells[0].Value != DBNull.Value)
                         {
-                            Codigo = Convert.ToInt32(row.Cells[1].Value);
-                            Rpta = NUsuario.Activar(Codigo);
+                            if (Convert.ToBoolean(row.Cells[0].Value))
+                            {
+                                SeEncontroSeleccion = true;
+                                Codigo = Convert.ToInt32(row.Cells[1].Value);
+                                Rpta = NUsuario.Activar(Codigo);
 
-                            if (Rpta.Equals("OK"))
-                            {
-                                this.MensajeOk("Se activó de forma correcta el registro: " + Convert.ToString(row.Cells[4].Value));
-                            }
-                            else
-                            {
-                                this.MensajeError(Rpta);
+                                if (Rpta.Equals("OK"))
+                                {
+                                    this.MensajeOk("Se activó de forma correcta el registro: " + Convert.ToString(row.Cells[4].Value));
+                                }
+                                else
+                                {
+                                    this.MensajeError(Rpta);
+                                }
                             }
                         }
                     }
-                    this.Listar();
+                    if (!SeEncontroSeleccion)
+                    {
+                        this.MensajeError("No se ha seleccionado ningún registro para activar");
+                    }
+                    else
+                    {
+                        this.Listar();
+                    }
                 }
 
             }

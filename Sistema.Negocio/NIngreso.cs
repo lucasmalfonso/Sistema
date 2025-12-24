@@ -21,16 +21,12 @@ namespace Sistema.Negocio
             DIngreso Datos = new DIngreso();
             return Datos.ListarDetalle(Id);
         }
-        public static string Insertar(int IdProveedor,int IdUsuario,string TipoComprobante,string SerioComprobante,string NumComprobante, decimal Impuesto, decimal Total,DataTable Detalles)
+        public static string Insertar(int IdProveedor,int IdUsuario, decimal Total,DataTable Detalles)
         {
             DIngreso Datos = new DIngreso();
             Ingreso Obj = new Ingreso();
             Obj.IdProveedor = IdProveedor;
             Obj.IdUsuario = IdUsuario;
-            Obj.TipoCompronte = TipoComprobante;
-            Obj.SerieComprobante = SerioComprobante;
-            Obj.NumComprobante = NumComprobante;
-            Obj.Impuesto = Impuesto;
             Obj.Total = Total;
             Obj.Detalles = Detalles;
             return Datos.Insertar(Obj);

@@ -48,22 +48,17 @@ namespace Sistema.Presentacion
         }
         private void Formato()
         {
-            DgvListado.Columns[0].Visible = false;
-            DgvListado.Columns[1].Visible = false;
-            DgvListado.Columns[2].Visible = false;
-            DgvListado.Columns[0].Width = 100;
-            DgvListado.Columns[3].Width = 150;
-            DgvListado.Columns[4].Width = 150;
-            DgvListado.Columns[5].Width = 100;
-            DgvListado.Columns[5].HeaderText = "Documento";
-            DgvListado.Columns[6].Width = 70;
-            DgvListado.Columns[6].HeaderText = "Serie";
-            DgvListado.Columns[7].Width = 80;
-            DgvListado.Columns[7].HeaderText = "Número";
-            DgvListado.Columns[8].Width = 60;
-            DgvListado.Columns[9].Width = 100;
-            DgvListado.Columns[10].Width = 100;
-            DgvListado.Columns[11].Width = 100;
+            // Columna 0: Seleccionar (checkbox)
+            DgvListado.Columns[1].Visible = false; // ID
+            DgvListado.Columns[2].Visible = false; // idproveedor
+            DgvListado.Columns[3].Visible = false; // idusuario
+            DgvListado.Columns[4].Width = 150; // Usuario
+            DgvListado.Columns[5].Width = 150; // Proveedor
+            DgvListado.Columns[6].Width = 100; // Fecha
+            DgvListado.Columns[6].HeaderText = "Fecha";
+            DgvListado.Columns[7].Width = 100; // Total
+            DgvListado.Columns[7].HeaderText = "Total";
+            DgvListado.Columns[8].Width = 100; // Estado
         }
         private void Limpiar()
         {
@@ -71,11 +66,7 @@ namespace Sistema.Presentacion
             TxtId.Clear();
             TxtIdProveedor.Clear();
             TxtNombreProveedor.Clear();
-            TxtSerieComprobante.Clear();
-            TxtNumComprobate.Clear();
             DtDetalle.Clear();
-            TxtSubTotal.Text = "0.00";
-            TxtTotalImpuesto.Text = "0.00";
             TxtTotal.Text = "0.00";
 
             DgvListado.Columns[0].Visible = false;
@@ -135,18 +126,6 @@ namespace Sistema.Presentacion
         {
             this.Buscar();
         }
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
         private void BtnBuscarProveedor_Click(object sender, EventArgs e)
         {
             FrmVista_ProveedorIngreso vista = new FrmVista_ProveedorIngreso();
@@ -204,7 +183,6 @@ namespace Sistema.Presentacion
         private void CalcularTotales()
         {
             decimal Total = 0;
-            decimal SubTotal = 0;
             if (DgvDetalle.Rows.Count == 0)
             {
                 Total = 0;
@@ -216,11 +194,7 @@ namespace Sistema.Presentacion
                     Total = Total + Convert.ToDecimal(FilaTemp["importe"]);
                 }
             }
-            SubTotal = Total / (1 + Convert.ToDecimal(TxtImpuesto.Text));
             TxtTotal.Text = Total.ToString("#0.00#");
-            TxtSubTotal.Text = SubTotal.ToString("#0.00#");
-            TxtTotalImpuesto.Text = (Total - SubTotal).ToString("#0.00#");
-
         }
         private void DgvDetalle_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -234,10 +208,7 @@ namespace Sistema.Presentacion
         {
             PanelArticulos.Visible = true;
         }
-        private void BtnCerrarArticulos_Click(object sender, EventArgs e)
-        {
-            PanelArticulos.Visible = false;
-        }
+
         private void BtnFiltrarArticulos_Click(object sender, EventArgs e)
         {
             try
@@ -278,17 +249,15 @@ namespace Sistema.Presentacion
             try
             {
                 string Rpta = "";
-                if (TxtIdProveedor.Text == String.Empty || TxtImpuesto.Text == string.Empty || TxtNumComprobate.Text == string.Empty || DtDetalle.Rows.Count == 0)
+                if (TxtIdProveedor.Text == String.Empty || DtDetalle.Rows.Count == 0)
                 {
                     this.MensajeError("Falta ingresar algunos datos, serán remarcados");
                     ErrorIcono.SetError(TxtIdProveedor, "Seleccione un proveedor");
-                    ErrorIcono.SetError(TxtImpuesto, "Ingrese el impuesto");
-                    ErrorIcono.SetError(TxtNumComprobate, "Ingrese el número de comprobante");
                     ErrorIcono.SetError(DgvDetalle, "Ingrese los detalles del ingreso");
                 }
                 else
                 {
-                    Rpta = NIngreso.Insertar(Convert.ToInt32(TxtIdProveedor.Text), Variables.IdUsuario, CboComprobante.Text, TxtSerieComprobante.Text.Trim(), TxtNumComprobate.Text.Trim(), Convert.ToDecimal(TxtImpuesto.Text), Convert.ToDecimal(TxtTotal.Text), DtDetalle);
+                    Rpta = NIngreso.Insertar(Convert.ToInt32(TxtIdProveedor.Text), Variables.IdUsuario, Convert.ToDecimal(TxtTotal.Text), DtDetalle);
                     if (Rpta.Equals("OK"))
                     {
                         this.MensajeOk("Se insertó de forma correcta el registro");
@@ -306,21 +275,12 @@ namespace Sistema.Presentacion
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
         private void DgvListado_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 DgvMostrarDetalle.DataSource = NIngreso.ListarDetalle(Convert.ToInt32(DgvListado.CurrentRow.Cells["ID"].Value));
-                decimal Total, SubTotal;
-                decimal Impuesto = Convert.ToDecimal(DgvListado.CurrentRow.Cells["Impuesto"].Value);
-                Total = Convert.ToDecimal(DgvListado.CurrentRow.Cells["Total"].Value);
-                SubTotal = Total / (1 + Impuesto);
-                TxtSubtotalD.Text = SubTotal.ToString("#0.00#");
-                TxtTotalImpuestoD.Text = (Total - SubTotal).ToString("#0.00#");
+                decimal Total = Convert.ToDecimal(DgvListado.CurrentRow.Cells["Total"].Value);
                 TxtTotalD.Text = Total.ToString("#0.00#");
                 PanelMostrar.Visible = true;
             }
@@ -380,7 +340,7 @@ namespace Sistema.Presentacion
 
                             if (Rpta.Equals("OK"))
                             {
-                                this.MensajeOk("Se anuló de forma correcta el registro" + Convert.ToString(row.Cells[6].Value) + "-" + Convert.ToString(row.Cells[7].Value));
+                                this.MensajeOk("Se anuló de forma correcta el registro");
                             }
                             else
                             {
@@ -400,6 +360,11 @@ namespace Sistema.Presentacion
         private void PanelMostrar_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void BtnCerrarArticulos_Click_1(object sender, EventArgs e)
+        {
+            PanelArticulos.Visible = false;
         }
     }
 }

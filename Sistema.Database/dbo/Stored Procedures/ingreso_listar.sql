@@ -1,11 +1,9 @@
-﻿CREATE PROC dbo.ingreso_listar
+﻿CREATE PROC [dbo].[ingreso_listar]
 AS
 BEGIN
     SELECT i.idingreso AS ID,i.idproveedor,i.idusuario,
-    p.nombre AS Proveedor,u.nombre AS Usuario,
-    i.serie_comprobante AS Serie,
-    i.num_comprobante AS Numero,i.fecha AS Fecha,
-    i.impuesto AS Impuesto,i.total AS Total,
+    u.nombre AS Usuario,p.nombre AS Proveedor,
+    i.fecha AS Fecha,i.total AS Total,
     i.estado AS Estado
     FROM ingreso i
     INNER JOIN persona p ON i.idproveedor=p.idpersona

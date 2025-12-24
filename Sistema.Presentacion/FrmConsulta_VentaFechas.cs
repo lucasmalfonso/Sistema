@@ -109,9 +109,7 @@ namespace Sistema.Presentacion
         }
         private void FrmConsulta_VentaFechas_Load(object sender, EventArgs e)
         {
-            // Inicializar ComboBox con "TODAS" seleccionado
-            CboFormaPagoConsulta.SelectedIndex = 0;
-            CboMonedaConsulta.SelectedIndex = 0;
+
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
@@ -207,11 +205,6 @@ namespace Sistema.Presentacion
         private void BtnCerrarDetalle_Click(object sender, EventArgs e)
         {
             PanelMostrar.Visible=false;
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

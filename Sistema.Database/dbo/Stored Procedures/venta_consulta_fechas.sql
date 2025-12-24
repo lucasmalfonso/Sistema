@@ -18,7 +18,8 @@ BEGIN
     FROM venta v
     INNER JOIN persona p ON v.idcliente=p.idpersona
     INNER JOIN usuario u ON v.idusuario=u.idusuario
-    WHERE v.fecha BETWEEN @fecha_inicio AND @fecha_fin
+    WHERE v.fecha >= @fecha_inicio 
+    AND v.fecha < DATEADD(day, 1, @fecha_fin)
     AND (@forma_pago IS NULL OR v.forma_pago = @forma_pago)
     AND (@moneda IS NULL OR v.moneda = @moneda)
     ORDER BY v.idventa DESC;

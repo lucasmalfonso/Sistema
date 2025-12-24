@@ -1,14 +1,15 @@
-﻿
---Procedimiento Insertar
-create proc usuario_insertar
-@idrol integer,
-@nombre varchar(100),
-@tipo_documento varchar(20),
-@num_documento varchar(20),
-@direccion varchar(70),
-@telefono varchar(20),
-@email varchar(50),
-@clave varchar(50)
-as
-insert into usuario (idrol,nombre,tipo_documento,num_documento,direccion,telefono,email,clave)
-values (@idrol,@nombre,@tipo_documento,@num_documento,@direccion,@telefono,@email,HASHBYTES('SHA2_256',@clave))
+﻿CREATE PROCEDURE [dbo].[usuario_insertar]
+    @idrol INTEGER,
+    @nombre VARCHAR(100),
+    @tipo_documento VARCHAR(20),
+    @num_documento VARCHAR(20),
+    @direccion VARCHAR(70),
+    @telefono VARCHAR(20),
+    @email VARCHAR(50),
+    @usuario VARCHAR(50),
+    @clave VARCHAR(50)
+AS
+BEGIN
+    INSERT INTO usuario (idrol, nombre, tipo_documento, num_documento, direccion, telefono, email, usuario, clave)
+    VALUES (@idrol, @nombre, @tipo_documento, @num_documento, @direccion, @telefono, @email, @usuario, HASHBYTES('SHA2_256', @clave))
+END

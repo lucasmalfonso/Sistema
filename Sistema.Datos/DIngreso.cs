@@ -93,10 +93,6 @@ namespace Sistema.Datos
                 Comando.CommandType = CommandType.StoredProcedure;
                 Comando.Parameters.Add("@idproveedor", SqlDbType.Int).Value = Obj.IdProveedor;
                 Comando.Parameters.Add("@idusuario", SqlDbType.Int).Value = Obj.IdUsuario;
-                Comando.Parameters.Add("@tipo_comprobante", SqlDbType.VarChar).Value = Obj.TipoCompronte;
-                Comando.Parameters.Add("@serie_comprobante", SqlDbType.VarChar).Value = Obj.SerieComprobante;
-                Comando.Parameters.Add("@num_comprobante", SqlDbType.VarChar).Value = Obj.NumComprobante;
-                Comando.Parameters.Add("@impuesto", SqlDbType.Decimal).Value = Obj.Impuesto;
                 Comando.Parameters.Add("@total", SqlDbType.Decimal).Value = Obj.Total;
                 Comando.Parameters.Add("@detalle", SqlDbType.Structured).Value = Obj.Detalles;
                 SqlCon.Open();

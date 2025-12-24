@@ -16,6 +16,26 @@ namespace Sistema.Presentacion
         public FrmLogin()
         {
             InitializeComponent();
+            this.TxtClave.KeyPress += TxtClave_KeyPress;
+            this.TxtEmail.KeyPress += TxtEmail_KeyPress;
+        }
+
+        private void TxtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                TxtClave.Focus();
+            }
+        }
+
+        private void TxtClave_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                BtnAcceder_Click(sender, e);
+            }
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -31,13 +51,13 @@ namespace Sistema.Presentacion
                 Tabla = NUsuario.Login(TxtEmail.Text.Trim(), TxtClave.Text.Trim());
                 if (Tabla.Rows.Count <= 0)
                 {
-                    MessageBox.Show("El email o la clave es inconrrecta.", "Acceso al sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El usuario o la clave es incorrecta.", "Acceso al sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     if (Convert.ToBoolean(Tabla.Rows[0][4]) == false)
                     {
-                        MessageBox.Show("Este usuario no esta activo.", "Acceso al sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Este usuario no está activo.", "Acceso al sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -55,7 +75,7 @@ namespace Sistema.Presentacion
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Ocurrió un error al intentar iniciar sesión. Por favor, intente nuevamente.\n\nDetalle: " + ex.Message, "Error de acceso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

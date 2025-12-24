@@ -104,7 +104,7 @@ namespace Sistema.Presentacion
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            StBarraInferior.Text = "Desarrollado por Lucas Alfonso, Usuario: " + this.Nombre;
+            StBarraInferior.Text = "Usuario: " + this.Nombre;
             MessageBox.Show("Bienvenido: " + this.Nombre, "Sistema de Ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             if (this.Rol.Equals("Administrador"))
@@ -112,47 +112,60 @@ namespace Sistema.Presentacion
                 MnuAlmacen.Enabled = true;
                 MnuIngresos.Enabled = true;
                 MnuVentas.Enabled = true;
-                MnuAccesos.Enabled = true;
+                MnuAccesos.Enabled = false;
                 MnuConsultas.Enabled = true;
                 TsCompras.Enabled = true;
                 TsVentas.Enabled = true;
             }
             else
             {
-                if (this.Rol.Equals("Vendedor"))
+                if (this.Rol.Equals("Soporte"))
                 {
-                    MnuAlmacen.Enabled = false;
-                    MnuIngresos.Enabled = false;
+                    MnuAlmacen.Enabled = true;
+                    MnuIngresos.Enabled = true;
                     MnuVentas.Enabled = true;
-                    MnuAccesos.Enabled = false;
+                    MnuAccesos.Enabled = true;
                     MnuConsultas.Enabled = true;
-                    TsCompras.Enabled = false;
+                    TsCompras.Enabled = true;
                     TsVentas.Enabled = true;
                 }
                 else
                 {
-                    if (this.Rol.Equals("Almacenero"))
-                    {
-                        MnuAlmacen.Enabled = true;
-                        MnuIngresos.Enabled = true;
-                        MnuVentas.Enabled = false;
-                        MnuAccesos.Enabled = false;
-                        MnuConsultas.Enabled = true;
-                        TsCompras.Enabled = true;
-                        TsVentas.Enabled = false;
-                    }
-                    else
+                    if (this.Rol.Equals("Vendedor"))
                     {
                         MnuAlmacen.Enabled = false;
                         MnuIngresos.Enabled = false;
-                        MnuVentas.Enabled = false;
+                        MnuVentas.Enabled = true;
                         MnuAccesos.Enabled = false;
-                        MnuConsultas.Enabled = false;
+                        MnuConsultas.Enabled = true;
                         TsCompras.Enabled = false;
-                        TsVentas.Enabled = false;
+                        TsVentas.Enabled = true;
                     }
+                    else
+                    {
+                        if (this.Rol.Equals("Almacenero"))
+                        {
+                            MnuAlmacen.Enabled = true;
+                            MnuIngresos.Enabled = true;
+                            MnuVentas.Enabled = false;
+                            MnuAccesos.Enabled = false;
+                            MnuConsultas.Enabled = true;
+                            TsCompras.Enabled = true;
+                            TsVentas.Enabled = false;
+                        }
+                        else
+                        {
+                            MnuAlmacen.Enabled = false;
+                            MnuIngresos.Enabled = false;
+                            MnuVentas.Enabled = false;
+                            MnuAccesos.Enabled = false;
+                            MnuConsultas.Enabled = false;
+                            TsCompras.Enabled = false;
+                            TsVentas.Enabled = false;
+                        }
 
 
+                    }
                 }
             }
         }

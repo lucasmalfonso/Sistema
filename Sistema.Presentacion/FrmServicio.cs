@@ -405,7 +405,7 @@ namespace Sistema.Presentacion
 
         private void BtnReporte_Click(object sender, EventArgs e)
         {
-            Reportes.FrmReporteArticulos Reporte = new Reportes.FrmReporteArticulos();
+            Reportes.FrmReporteServicios Reporte = new Reportes.FrmReporteServicios();
             Reporte.ShowDialog();
         }
 

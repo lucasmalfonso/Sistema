@@ -226,16 +226,16 @@
             this.DgvMostrarDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvMostrarDetalle.Size = new System.Drawing.Size(894, 275);
             this.DgvMostrarDetalle.TabIndex = 0;
-            this.DgvMostrarDetalle.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvMostrarDetalle_CellContentClick);
             // 
             // BtnAnular
             // 
-            this.BtnAnular.Location = new System.Drawing.Point(284, 454);
+            this.BtnAnular.BackColor = System.Drawing.Color.Transparent;
+            this.BtnAnular.Location = new System.Drawing.Point(284, 455);
             this.BtnAnular.Name = "BtnAnular";
             this.BtnAnular.Size = new System.Drawing.Size(127, 23);
             this.BtnAnular.TabIndex = 6;
             this.BtnAnular.Text = "Anular";
-            this.BtnAnular.UseVisualStyleBackColor = true;
+            this.BtnAnular.UseVisualStyleBackColor = false;
             this.BtnAnular.Click += new System.EventHandler(this.BtnAnular_Click);
             // 
             // ChkSeleccionar
@@ -251,10 +251,10 @@
             // 
             // BtnBuscar
             // 
-            this.BtnBuscar.BackColor = System.Drawing.Color.LightGray;
+            this.BtnBuscar.BackColor = System.Drawing.Color.Transparent;
             this.BtnBuscar.Location = new System.Drawing.Point(604, 16);
             this.BtnBuscar.Name = "BtnBuscar";
-            this.BtnBuscar.Size = new System.Drawing.Size(190, 23);
+            this.BtnBuscar.Size = new System.Drawing.Size(127, 23);
             this.BtnBuscar.TabIndex = 3;
             this.BtnBuscar.Text = "Buscar";
             this.BtnBuscar.UseVisualStyleBackColor = false;
@@ -313,12 +313,13 @@
             // 
             // BtnComprobante
             // 
-            this.BtnComprobante.Location = new System.Drawing.Point(839, 17);
+            this.BtnComprobante.BackColor = System.Drawing.Color.Transparent;
+            this.BtnComprobante.Location = new System.Drawing.Point(857, 16);
             this.BtnComprobante.Name = "BtnComprobante";
-            this.BtnComprobante.Size = new System.Drawing.Size(117, 23);
+            this.BtnComprobante.Size = new System.Drawing.Size(127, 23);
             this.BtnComprobante.TabIndex = 8;
             this.BtnComprobante.Text = "Comprobante";
-            this.BtnComprobante.UseVisualStyleBackColor = true;
+            this.BtnComprobante.UseVisualStyleBackColor = false;
             this.BtnComprobante.Click += new System.EventHandler(this.BtnComprobante_Click);
             // 
             // TxtNombre
@@ -423,7 +424,6 @@
             this.label16.Size = new System.Drawing.Size(35, 13);
             this.label16.TabIndex = 1;
             this.label16.Text = "Cuota";
-            this.label16.Click += new System.EventHandler(this.label16_Click);
             // 
             // label15
             // 
@@ -495,9 +495,9 @@
             this.BtnCerrarArticulos.BackColor = System.Drawing.Color.Red;
             this.BtnCerrarArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCerrarArticulos.ForeColor = System.Drawing.Color.White;
-            this.BtnCerrarArticulos.Location = new System.Drawing.Point(1016, 11);
+            this.BtnCerrarArticulos.Location = new System.Drawing.Point(1013, 11);
             this.BtnCerrarArticulos.Name = "BtnCerrarArticulos";
-            this.BtnCerrarArticulos.Size = new System.Drawing.Size(34, 27);
+            this.BtnCerrarArticulos.Size = new System.Drawing.Size(37, 27);
             this.BtnCerrarArticulos.TabIndex = 3;
             this.BtnCerrarArticulos.Text = "X";
             this.BtnCerrarArticulos.UseVisualStyleBackColor = false;
@@ -545,7 +545,6 @@
             this.label10.Size = new System.Drawing.Size(31, 13);
             this.label10.TabIndex = 10;
             this.label10.Text = "Total";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // DgvDetalle
             // 

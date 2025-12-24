@@ -199,6 +199,12 @@
     <Compile Include="Reportes\FrmReporteComprobanteVenta.Designer.cs">
       <DependentUpon>FrmReporteComprobanteVenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\FrmReporteServicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\FrmReporteServicios.Designer.cs">
+      <DependentUpon>FrmReporteServicios.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Variables.cs" />
     <EmbeddedResource Include="FrmArticulo.resx">
@@ -259,8 +265,12 @@
     <EmbeddedResource Include="Reportes\FrmReporteComprobanteVenta.resx">
       <DependentUpon>FrmReporteComprobanteVenta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\FrmReporteServicios.resx">
+      <DependentUpon>FrmReporteServicios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\RptArticulos.rdlc" />
     <EmbeddedResource Include="Reportes\RptComprobanteVenta.rdlc" />
+    <EmbeddedResource Include="Reportes\RptServicios.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
