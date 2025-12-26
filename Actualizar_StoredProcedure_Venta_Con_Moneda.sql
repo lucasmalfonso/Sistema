@@ -65,3 +65,4 @@ PRINT 'Stored procedure venta_insertar actualizado correctamente con el campo mo
 
 
 
+

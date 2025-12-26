@@ -61,3 +61,4 @@ PRINT 'Stored procedure venta_insertar actualizado correctamente.';
 
 
 
+

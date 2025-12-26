@@ -34,6 +34,7 @@
             this.MnuAlmacen = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.articulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serviciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MnuIngresos = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,7 +46,6 @@
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MnuConsultas = new System.Windows.Forms.ToolStripMenuItem();
             this.consultasVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.consultaComprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,7 +70,6 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.StBarraInferior = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.serviciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -108,16 +107,23 @@
             // categoriasToolStripMenuItem
             // 
             this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.categoriasToolStripMenuItem.Text = "Cate&gorias";
             this.categoriasToolStripMenuItem.Click += new System.EventHandler(this.categoriasToolStripMenuItem_Click);
             // 
             // articulosToolStripMenuItem
             // 
             this.articulosToolStripMenuItem.Name = "articulosToolStripMenuItem";
-            this.articulosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.articulosToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.articulosToolStripMenuItem.Text = "&Articulos";
             this.articulosToolStripMenuItem.Click += new System.EventHandler(this.articulosToolStripMenuItem_Click);
+            // 
+            // serviciosToolStripMenuItem
+            // 
+            this.serviciosToolStripMenuItem.Name = "serviciosToolStripMenuItem";
+            this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.serviciosToolStripMenuItem.Text = "Servicios";
+            this.serviciosToolStripMenuItem.Click += new System.EventHandler(this.serviciosToolStripMenuItem_Click);
             // 
             // MnuIngresos
             // 
@@ -191,8 +197,7 @@
             // MnuConsultas
             // 
             this.MnuConsultas.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.consultasVentasToolStripMenuItem,
-            this.consultaComprasToolStripMenuItem});
+            this.consultasVentasToolStripMenuItem});
             this.MnuConsultas.Name = "MnuConsultas";
             this.MnuConsultas.Size = new System.Drawing.Size(71, 20);
             this.MnuConsultas.Text = "Consultas";
@@ -200,15 +205,9 @@
             // consultasVentasToolStripMenuItem
             // 
             this.consultasVentasToolStripMenuItem.Name = "consultasVentasToolStripMenuItem";
-            this.consultasVentasToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.consultasVentasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.consultasVentasToolStripMenuItem.Text = "Consultas Ventas";
             this.consultasVentasToolStripMenuItem.Click += new System.EventHandler(this.consultasVentasToolStripMenuItem_Click);
-            // 
-            // consultaComprasToolStripMenuItem
-            // 
-            this.consultaComprasToolStripMenuItem.Name = "consultaComprasToolStripMenuItem";
-            this.consultaComprasToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.consultaComprasToolStripMenuItem.Text = "Consulta Compras";
             // 
             // viewMenu
             // 
@@ -254,35 +253,35 @@
             // cascadeToolStripMenuItem
             // 
             this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
-            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cascadeToolStripMenuItem.Text = "&Cascada";
             this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.CascadeToolStripMenuItem_Click);
             // 
             // tileVerticalToolStripMenuItem
             // 
             this.tileVerticalToolStripMenuItem.Name = "tileVerticalToolStripMenuItem";
-            this.tileVerticalToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.tileVerticalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tileVerticalToolStripMenuItem.Text = "Mosaico &vertical";
             this.tileVerticalToolStripMenuItem.Click += new System.EventHandler(this.TileVerticalToolStripMenuItem_Click);
             // 
             // tileHorizontalToolStripMenuItem
             // 
             this.tileHorizontalToolStripMenuItem.Name = "tileHorizontalToolStripMenuItem";
-            this.tileHorizontalToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.tileHorizontalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tileHorizontalToolStripMenuItem.Text = "Mosaico &horizontal";
             this.tileHorizontalToolStripMenuItem.Click += new System.EventHandler(this.TileHorizontalToolStripMenuItem_Click);
             // 
             // closeAllToolStripMenuItem
             // 
             this.closeAllToolStripMenuItem.Name = "closeAllToolStripMenuItem";
-            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.closeAllToolStripMenuItem.Text = "C&errar todo";
             this.closeAllToolStripMenuItem.Click += new System.EventHandler(this.CloseAllToolStripMenuItem_Click);
             // 
             // arrangeIconsToolStripMenuItem
             // 
             this.arrangeIconsToolStripMenuItem.Name = "arrangeIconsToolStripMenuItem";
-            this.arrangeIconsToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.arrangeIconsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.arrangeIconsToolStripMenuItem.Text = "&Organizar iconos";
             this.arrangeIconsToolStripMenuItem.Click += new System.EventHandler(this.ArrangeIconsToolStripMenuItem_Click);
             // 
@@ -397,13 +396,6 @@
             this.StBarraInferior.Text = "Desarrollado por Lucas Alfonso";
             this.StBarraInferior.Click += new System.EventHandler(this.toolStripStatusLabel_Click);
             // 
-            // serviciosToolStripMenuItem
-            // 
-            this.serviciosToolStripMenuItem.Name = "serviciosToolStripMenuItem";
-            this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.serviciosToolStripMenuItem.Text = "Servicios";
-            this.serviciosToolStripMenuItem.Click += new System.EventHandler(this.serviciosToolStripMenuItem_Click);
-            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -468,7 +460,6 @@
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MnuConsultas;
         private System.Windows.Forms.ToolStripMenuItem consultasVentasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem consultaComprasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton TsCompras;
         private System.Windows.Forms.ToolStripButton TsVentas;

@@ -78,3 +78,4 @@ PRINT 'NOTA: Si la columna tipo_comprobante es NOT NULL en las tablas, necesitar
 
 
 
+

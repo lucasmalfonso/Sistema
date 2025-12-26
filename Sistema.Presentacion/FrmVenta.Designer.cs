@@ -40,6 +40,7 @@
             this.BtnCerrarDetalle = new System.Windows.Forms.Button();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.PanelMostrar = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.TxtTotalD = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.DgvMostrarDetalle = new System.Windows.Forms.DataGridView();
@@ -119,7 +120,7 @@
             this.groupBox1.Controls.Add(this.TxtId);
             this.groupBox1.Location = new System.Drawing.Point(17, 18);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1145, 89);
+            this.groupBox1.Size = new System.Drawing.Size(1284, 89);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cabecera";
@@ -169,11 +170,11 @@
             // 
             // BtnCerrarDetalle
             // 
-            this.BtnCerrarDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCerrarDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCerrarDetalle.ForeColor = System.Drawing.Color.Red;
-            this.BtnCerrarDetalle.Location = new System.Drawing.Point(850, 4);
+            this.BtnCerrarDetalle.Location = new System.Drawing.Point(889, 17);
             this.BtnCerrarDetalle.Name = "BtnCerrarDetalle";
-            this.BtnCerrarDetalle.Size = new System.Drawing.Size(70, 34);
+            this.BtnCerrarDetalle.Size = new System.Drawing.Size(31, 23);
             this.BtnCerrarDetalle.TabIndex = 1;
             this.BtnCerrarDetalle.Text = "X";
             this.BtnCerrarDetalle.UseVisualStyleBackColor = true;
@@ -188,15 +189,27 @@
             // PanelMostrar
             // 
             this.PanelMostrar.BackColor = System.Drawing.Color.Moccasin;
+            this.PanelMostrar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelMostrar.Controls.Add(this.label2);
             this.PanelMostrar.Controls.Add(this.TxtTotalD);
             this.PanelMostrar.Controls.Add(this.label14);
             this.PanelMostrar.Controls.Add(this.BtnCerrarDetalle);
             this.PanelMostrar.Controls.Add(this.DgvMostrarDetalle);
-            this.PanelMostrar.Location = new System.Drawing.Point(206, 172);
+            this.PanelMostrar.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.PanelMostrar.Location = new System.Drawing.Point(57, 68);
             this.PanelMostrar.Name = "PanelMostrar";
-            this.PanelMostrar.Size = new System.Drawing.Size(936, 404);
+            this.PanelMostrar.Size = new System.Drawing.Size(941, 394);
             this.PanelMostrar.TabIndex = 7;
             this.PanelMostrar.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(26, 17);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(86, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Detalle de Venta";
             // 
             // TxtTotalD
             // 
@@ -220,7 +233,7 @@
             this.DgvMostrarDetalle.AllowUserToAddRows = false;
             this.DgvMostrarDetalle.AllowUserToDeleteRows = false;
             this.DgvMostrarDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvMostrarDetalle.Location = new System.Drawing.Point(26, 44);
+            this.DgvMostrarDetalle.Location = new System.Drawing.Point(26, 56);
             this.DgvMostrarDetalle.Name = "DgvMostrarDetalle";
             this.DgvMostrarDetalle.ReadOnly = true;
             this.DgvMostrarDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -365,7 +378,7 @@
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Location = new System.Drawing.Point(17, 147);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1145, 100);
+            this.groupBox3.Size = new System.Drawing.Size(1284, 100);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Medio de Pago";
@@ -446,25 +459,27 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Location = new System.Drawing.Point(17, 289);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1145, 432);
+            this.groupBox2.Size = new System.Drawing.Size(1284, 432);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle";
             // 
             // PanelArticulos
             // 
-            this.PanelArticulos.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.PanelArticulos.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.PanelArticulos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PanelArticulos.Controls.Add(this.LblTotalArticulos);
             this.PanelArticulos.Controls.Add(this.DgvArticulos);
             this.PanelArticulos.Controls.Add(this.BtnCerrarArticulos);
             this.PanelArticulos.Controls.Add(this.BtnFiltrarArticulos);
             this.PanelArticulos.Controls.Add(this.TxtBuscarArticulo);
             this.PanelArticulos.Controls.Add(this.label11);
-            this.PanelArticulos.Location = new System.Drawing.Point(55, 63);
+            this.PanelArticulos.Location = new System.Drawing.Point(198, 19);
             this.PanelArticulos.Name = "PanelArticulos";
             this.PanelArticulos.Size = new System.Drawing.Size(1069, 393);
             this.PanelArticulos.TabIndex = 10;
             this.PanelArticulos.Visible = false;
+            this.PanelArticulos.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelArticulos_Paint);
             // 
             // LblTotalArticulos
             // 
@@ -488,16 +503,17 @@
             this.DgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvArticulos.Size = new System.Drawing.Size(1028, 284);
             this.DgvArticulos.TabIndex = 4;
+            this.DgvArticulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvArticulos_CellContentClick);
             this.DgvArticulos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvArticulos_CellDoubleClick);
             // 
             // BtnCerrarArticulos
             // 
             this.BtnCerrarArticulos.BackColor = System.Drawing.Color.Red;
-            this.BtnCerrarArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCerrarArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCerrarArticulos.ForeColor = System.Drawing.Color.White;
-            this.BtnCerrarArticulos.Location = new System.Drawing.Point(1013, 11);
+            this.BtnCerrarArticulos.Location = new System.Drawing.Point(1019, 13);
             this.BtnCerrarArticulos.Name = "BtnCerrarArticulos";
-            this.BtnCerrarArticulos.Size = new System.Drawing.Size(37, 27);
+            this.BtnCerrarArticulos.Size = new System.Drawing.Size(31, 23);
             this.BtnCerrarArticulos.TabIndex = 3;
             this.BtnCerrarArticulos.Text = "X";
             this.BtnCerrarArticulos.UseVisualStyleBackColor = false;
@@ -672,5 +688,6 @@
         private System.Windows.Forms.ComboBox CboFormadePago;
         private System.Windows.Forms.ComboBox CboMoneda;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label2;
     }
 }

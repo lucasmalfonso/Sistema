@@ -43,6 +43,7 @@
             this.DtpFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.BtnComprobante = new System.Windows.Forms.Button();
             this.PanelMostrar = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.TxtTotalD = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.BtnCerrarDetalle = new System.Windows.Forms.Button();
@@ -65,7 +66,7 @@
             this.DgvMostrarDetalle.AllowUserToAddRows = false;
             this.DgvMostrarDetalle.AllowUserToDeleteRows = false;
             this.DgvMostrarDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvMostrarDetalle.Location = new System.Drawing.Point(26, 44);
+            this.DgvMostrarDetalle.Location = new System.Drawing.Point(26, 51);
             this.DgvMostrarDetalle.Name = "DgvMostrarDetalle";
             this.DgvMostrarDetalle.ReadOnly = true;
             this.DgvMostrarDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -196,7 +197,7 @@
             // 
             // BtnComprobante
             // 
-            this.BtnComprobante.Location = new System.Drawing.Point(1019, 8);
+            this.BtnComprobante.Location = new System.Drawing.Point(1026, 7);
             this.BtnComprobante.Name = "BtnComprobante";
             this.BtnComprobante.Size = new System.Drawing.Size(117, 23);
             this.BtnComprobante.TabIndex = 8;
@@ -207,15 +208,27 @@
             // PanelMostrar
             // 
             this.PanelMostrar.BackColor = System.Drawing.Color.Moccasin;
+            this.PanelMostrar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelMostrar.Controls.Add(this.label5);
             this.PanelMostrar.Controls.Add(this.TxtTotalD);
             this.PanelMostrar.Controls.Add(this.label14);
             this.PanelMostrar.Controls.Add(this.BtnCerrarDetalle);
             this.PanelMostrar.Controls.Add(this.DgvMostrarDetalle);
-            this.PanelMostrar.Location = new System.Drawing.Point(200, 41);
+            this.PanelMostrar.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.PanelMostrar.Location = new System.Drawing.Point(63, 68);
             this.PanelMostrar.Name = "PanelMostrar";
-            this.PanelMostrar.Size = new System.Drawing.Size(936, 404);
+            this.PanelMostrar.Size = new System.Drawing.Size(941, 394);
             this.PanelMostrar.TabIndex = 7;
             this.PanelMostrar.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(26, 13);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(86, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Detalle de Venta";
             // 
             // TxtTotalD
             // 
@@ -236,11 +249,11 @@
             // 
             // BtnCerrarDetalle
             // 
-            this.BtnCerrarDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCerrarDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCerrarDetalle.ForeColor = System.Drawing.Color.Red;
-            this.BtnCerrarDetalle.Location = new System.Drawing.Point(850, 4);
+            this.BtnCerrarDetalle.Location = new System.Drawing.Point(889, 13);
             this.BtnCerrarDetalle.Name = "BtnCerrarDetalle";
-            this.BtnCerrarDetalle.Size = new System.Drawing.Size(70, 34);
+            this.BtnCerrarDetalle.Size = new System.Drawing.Size(31, 23);
             this.BtnCerrarDetalle.TabIndex = 1;
             this.BtnCerrarDetalle.Text = "X";
             this.BtnCerrarDetalle.UseVisualStyleBackColor = true;
@@ -248,10 +261,10 @@
             // 
             // BtnBuscar
             // 
-            this.BtnBuscar.BackColor = System.Drawing.Color.LightGray;
+            this.BtnBuscar.BackColor = System.Drawing.Color.Transparent;
             this.BtnBuscar.Location = new System.Drawing.Point(823, 7);
             this.BtnBuscar.Name = "BtnBuscar";
-            this.BtnBuscar.Size = new System.Drawing.Size(190, 23);
+            this.BtnBuscar.Size = new System.Drawing.Size(127, 23);
             this.BtnBuscar.TabIndex = 3;
             this.BtnBuscar.Text = "Buscar";
             this.BtnBuscar.UseVisualStyleBackColor = false;
@@ -348,5 +361,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label LblDolares;
         private System.Windows.Forms.Label LblPesos;
+        private System.Windows.Forms.Label label5;
     }
 }

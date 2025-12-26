@@ -719,5 +719,15 @@ namespace Sistema.Presentacion
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void PanelArticulos_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void DgvArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
