@@ -90,6 +90,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.label3.Location = new System.Drawing.Point(15, 373);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(170, 13);
@@ -425,7 +426,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1166, 664);
+            this.tabPage1.Size = new System.Drawing.Size(1327, 664);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -449,7 +450,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.label2.Location = new System.Drawing.Point(26, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 13);
