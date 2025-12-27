@@ -16,5 +16,6 @@ namespace Sistema.Entidades
         public string Direccion;
         public string Telefono;
         public string Email;
+        public DateTime FechaNacimiento;
     }
 }

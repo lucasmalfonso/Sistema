@@ -47,6 +47,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.DtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
             this.TxtNumDocumento = new System.Windows.Forms.TextBox();
             this.CboTipoDocumento = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -251,6 +253,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.DtpFechaNacimiento);
+            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.TxtNumDocumento);
             this.groupBox1.Controls.Add(this.CboTipoDocumento);
             this.groupBox1.Controls.Add(this.label6);
@@ -263,6 +267,23 @@
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información del Cliente";
+            // 
+            // DtpFechaNacimiento
+            // 
+            this.DtpFechaNacimiento.Location = new System.Drawing.Point(200, 250);
+            this.DtpFechaNacimiento.Name = "DtpFechaNacimiento";
+            this.DtpFechaNacimiento.Size = new System.Drawing.Size(300, 22);
+            this.DtpFechaNacimiento.TabIndex = 16;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(20, 253);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(113, 13);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Fecha Nacimiento";
             // 
             // TxtNumDocumento
             // 
@@ -431,5 +452,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DateTimePicker DtpFechaNacimiento;
+        private System.Windows.Forms.Label label9;
     }
 }

@@ -1,8 +1,16 @@
-﻿--Procedimiento Listar
-create proc persona_listar
-as
-select idpersona as ID, tipo_persona as Tipo_Persona,nombre as Nombre,
-tipo_documento as Tipo_Documento,num_documento as Num_Documento,
-direccion as Direccion,telefono as Telefono,email as Email
-from persona
-order by idpersona desc
+﻿CREATE PROCEDURE persona_listar
+AS
+BEGIN
+    SELECT
+IdPersona AS ID,
+        Tipo_Persona,
+ Nombre,
+        Tipo_Documento,
+        Num_Documento,
+      Direccion,
+  Telefono,
+        Email,
+        Fecha_Nacimiento
+    FROM Persona
+    ORDER BY Nombre
+END

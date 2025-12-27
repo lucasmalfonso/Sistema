@@ -51,21 +51,35 @@ namespace Sistema.Presentacion
 
         private void Formato()
         {
-            DgvListado.Columns[0].Visible = false;
-            DgvListado.Columns[1].Width = 50;
-            DgvListado.Columns[2].Width = 100;
-            DgvListado.Columns[2].HeaderText = "Tipo Persona";
-            DgvListado.Columns[3].Width = 170;
-            DgvListado.Columns[4].Width = 100;
-            DgvListado.Columns[4].HeaderText = "Documento";
-            DgvListado.Columns[5].Width = 100;
-            DgvListado.Columns[5].HeaderText = "Numero Doc.";
-            DgvListado.Columns[6].Width = 120;
-            DgvListado.Columns[6].HeaderText = "Dirección";
-            DgvListado.Columns[7].Width = 100;
-            DgvListado.Columns[7].HeaderText = "Teléfono";
-            DgvListado.Columns[8].Width = 120;
+            try
+            {
+                DgvListado.Columns[0].Visible = false;
+                DgvListado.Columns[1].Width = 50;
+                DgvListado.Columns[2].Width = 100;
+                DgvListado.Columns[2].HeaderText = "Tipo Persona";
+                DgvListado.Columns[3].Width = 170;
+                DgvListado.Columns[4].Width = 100;
+                DgvListado.Columns[4].HeaderText = "Documento";
+                DgvListado.Columns[5].Width = 100;
+                DgvListado.Columns[5].HeaderText = "Numero Doc.";
+                DgvListado.Columns[6].Width = 120;
+                DgvListado.Columns[6].HeaderText = "Dirección";
+                DgvListado.Columns[7].Width = 100;
+                DgvListado.Columns[7].HeaderText = "Teléfono";
+                DgvListado.Columns[8].Width = 120;
 
+                // Validar que la columna 9 existe antes de formatearla
+                if (DgvListado.Columns.Count > 9)
+                {
+                    DgvListado.Columns[9].Width = 150;
+                    DgvListado.Columns[9].HeaderText = "Fecha de Nacimiento";
+                    DgvListado.Columns[9].DefaultCellStyle.Format = "dd/MM/yyyy";
+                }
+            }
+            catch (Exception ex)
+            {
+                // Ignorar errores de formato
+            }
         }
         private void Limpiar()
         {
@@ -76,6 +90,7 @@ namespace Sistema.Presentacion
             TxtDireccion.Clear();
             TxtTelefono.Clear();
             TxtEmail.Clear();
+            DtpFechaNacimiento.Value = DateTime.Now;
             BtnInsertar.Visible = true;
             BtnActualizar.Visible = false;
             ErrorIcono.Clear();
@@ -112,7 +127,7 @@ namespace Sistema.Presentacion
                 }
                 else
                 {
-                    Rpta = NPersona.Insertar("Cliente",TxtNombre.Text.Trim(), CboTipoDocumento.Text, TxtNumDocumento.Text.Trim(), TxtDireccion.Text.Trim(), TxtTelefono.Text.Trim(), TxtEmail.Text.Trim());
+                    Rpta = NPersona.Insertar("Cliente",TxtNombre.Text.Trim(), CboTipoDocumento.Text, TxtNumDocumento.Text.Trim(), TxtDireccion.Text.Trim(), TxtTelefono.Text.Trim(), TxtEmail.Text.Trim(), DtpFechaNacimiento.Value);
                     if (Rpta.Equals("OK"))
                     {
                         this.MensajeOk("Se insertó de forma correcta el registro");
@@ -146,6 +161,10 @@ namespace Sistema.Presentacion
                 TxtDireccion.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Direccion"].Value);
                 TxtTelefono.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Telefono"].Value);
                 TxtEmail.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Email"].Value);
+                if (DgvListado.CurrentRow.Cells["Fecha_Nacimiento"].Value != DBNull.Value)
+                {
+                    DtpFechaNacimiento.Value = Convert.ToDateTime(DgvListado.CurrentRow.Cells["Fecha_Nacimiento"].Value);
+                }
                 TabGeneral.SelectedIndex = 1;
             }
             catch (Exception ex)
@@ -166,7 +185,7 @@ namespace Sistema.Presentacion
                 }
                 else
                 {
-                    Rpta = NPersona.Actualizar(Convert.ToInt32(TxtId.Text),"Cliente",this.NombreAnt, TxtNombre.Text.Trim(), CboTipoDocumento.Text, TxtNumDocumento.Text.Trim(), TxtDireccion.Text.Trim(), TxtTelefono.Text.Trim(), TxtEmail.Text.Trim());
+                    Rpta = NPersona.Actualizar(Convert.ToInt32(TxtId.Text),"Cliente",this.NombreAnt, TxtNombre.Text.Trim(), CboTipoDocumento.Text, TxtNumDocumento.Text.Trim(), TxtDireccion.Text.Trim(), TxtTelefono.Text.Trim(), TxtEmail.Text.Trim(), DtpFechaNacimiento.Value);
                     if (Rpta.Equals("OK"))
                     {
                         this.MensajeOk("Se actualizó de forma correcta el registro");

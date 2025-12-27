@@ -32,21 +32,35 @@ namespace Sistema.Presentacion
         }
         private void Formato()
         {
-            DgvListado.Columns[0].Visible = false;
-            DgvListado.Columns[1].Width = 50;
-            DgvListado.Columns[2].Width = 100;
-            DgvListado.Columns[2].HeaderText = "Tipo Persona";
-            DgvListado.Columns[3].Width = 170;
-            DgvListado.Columns[4].Width = 100;
-            DgvListado.Columns[4].HeaderText = "Documento";
-            DgvListado.Columns[5].Width = 100;
-            DgvListado.Columns[5].HeaderText = "Numero Doc.";
-            DgvListado.Columns[6].Width = 120;
-            DgvListado.Columns[6].HeaderText = "Dirección";
-            DgvListado.Columns[7].Width = 100;
-            DgvListado.Columns[7].HeaderText = "Teléfono";
-            DgvListado.Columns[8].Width = 120;
+            try
+            {
+                DgvListado.Columns[0].Visible = false;
+                DgvListado.Columns[1].Width = 50;
+                DgvListado.Columns[2].Width = 100;
+                DgvListado.Columns[2].HeaderText = "Tipo Persona";
+                DgvListado.Columns[3].Width = 170;
+                DgvListado.Columns[4].Width = 100;
+                DgvListado.Columns[4].HeaderText = "Documento";
+                DgvListado.Columns[5].Width = 100;
+                DgvListado.Columns[5].HeaderText = "Numero Doc.";
+                DgvListado.Columns[6].Width = 120;
+                DgvListado.Columns[6].HeaderText = "Dirección";
+                DgvListado.Columns[7].Width = 100;
+                DgvListado.Columns[7].HeaderText = "Teléfono";
+                DgvListado.Columns[8].Width = 120;
 
+                // Si existe la columna Fecha_Nacimiento, cambiar el header y mostrar solo la fecha
+                if (DgvListado.Columns.Count > 9)
+                {
+                    DgvListado.Columns[9].Width = 150;
+                    DgvListado.Columns[9].HeaderText = "Fecha de Nacimiento";
+                    DgvListado.Columns[9].DefaultCellStyle.Format = "dd/MM/yyyy";
+                }
+            }
+            catch
+            {
+                // Ignorar errores de formato
+            }
         }
 
         private void FrmVista_ClienteVenta_Load(object sender, EventArgs e)

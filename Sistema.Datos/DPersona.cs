@@ -206,6 +206,7 @@ namespace Sistema.Datos
                 Comando.Parameters.Add("@direccion", SqlDbType.VarChar).Value = Obj.Direccion;
                 Comando.Parameters.Add("@telefono", SqlDbType.VarChar).Value = Obj.Telefono;
                 Comando.Parameters.Add("@email", SqlDbType.VarChar).Value = Obj.Email;
+                Comando.Parameters.Add("@fecha_nacimiento", SqlDbType.DateTime).Value = Obj.FechaNacimiento;
                 SqlCon.Open();
                 Rpta = Comando.ExecuteNonQuery() == 1 ? "OK" : "No se pudo ingresar el registro";
             }
@@ -237,6 +238,7 @@ namespace Sistema.Datos
                 Comando.Parameters.Add("@direccion", SqlDbType.VarChar).Value = Obj.Direccion;
                 Comando.Parameters.Add("@telefono", SqlDbType.VarChar).Value = Obj.Telefono;
                 Comando.Parameters.Add("@email", SqlDbType.VarChar).Value = Obj.Email;
+                Comando.Parameters.Add("@fecha_nacimiento", SqlDbType.DateTime).Value = Obj.FechaNacimiento;
                 SqlCon.Open();
                 Rpta = Comando.ExecuteNonQuery() == 1 ? "OK" : "No se pudo actualizar el registro";
             }

@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using Sistema.Datos;
 using Sistema.Entidades;
 
@@ -36,7 +37,7 @@ namespace Sistema.Negocio
             DPersona Datos = new DPersona();
             return Datos.BuscarClientes(Valor);
         }
-        public static string Insertar(string TipoPersona, string Nombre, string TipoDocumento, string NumDocumento, string Direccion, string Telefono, string Email)
+        public static string Insertar(string TipoPersona, string Nombre, string TipoDocumento, string NumDocumento, string Direccion, string Telefono, string Email, DateTime FechaNacimiento)
         {
             DPersona Datos = new DPersona();
 
@@ -55,11 +56,12 @@ namespace Sistema.Negocio
                 Obj.Direccion = Direccion;
                 Obj.Telefono = Telefono;
                 Obj.Email = Email;
+                Obj.FechaNacimiento = FechaNacimiento;
                 return Datos.Insertar(Obj);
             }
         }
 
-        public static string Actualizar(int Id, string TipoPersona,string NombreAnt, string Nombre, string TipoDocumento, string NumDocumento, string Direccion, string Telefono, string Email)
+        public static string Actualizar(int Id, string TipoPersona,string NombreAnt, string Nombre, string TipoDocumento, string NumDocumento, string Direccion, string Telefono, string Email, DateTime FechaNacimiento)
         {
             DPersona Datos = new DPersona();
             Persona Obj = new Persona();
@@ -74,6 +76,7 @@ namespace Sistema.Negocio
                 Obj.Direccion = Direccion;
                 Obj.Telefono = Telefono;
                 Obj.Email = Email;
+                Obj.FechaNacimiento = FechaNacimiento;
                 return Datos.Actualizar(Obj);
             }
             else
@@ -93,6 +96,7 @@ namespace Sistema.Negocio
                     Obj.Direccion = Direccion;
                     Obj.Telefono = Telefono;
                     Obj.Email = Email;
+                    Obj.FechaNacimiento = FechaNacimiento;
                     return Datos.Actualizar(Obj);
                 }
             }

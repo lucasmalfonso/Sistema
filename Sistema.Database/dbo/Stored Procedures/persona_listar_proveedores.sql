@@ -1,9 +1,17 @@
-﻿--Procedimiento Listar Proveedores
-create proc persona_listar_proveedores
-as
-select idpersona as ID, tipo_persona as Tipo_Persona,nombre as Nombre,
-tipo_documento as Tipo_Documento,num_documento as Num_Documento,
-direccion as Direccion,telefono as Telefono,email as Email
-from persona
-where tipo_persona='Proveedor'
-order by idpersona desc
+﻿CREATE PROCEDURE persona_listar_proveedores
+AS
+BEGIN
+    SELECT
+   IdPersona AS ID,
+        Tipo_Persona,
+        Nombre,
+        Tipo_Documento,
+  Num_Documento,
+        Direccion,
+        Telefono,
+        Email,
+        Fecha_Nacimiento
+    FROM Persona
+    WHERE Tipo_Persona = 'Proveedor'
+ ORDER BY Nombre
+END
